@@ -15,6 +15,8 @@ Kunkin sarjan 1. joukkueen rastivälipaketti toimii vertailuna. Jos siinä on vi
 Tarkistuksen voi tehdä jo ennen tulospalveluun viemistä, kunhan on ratatiedosto (XML IOF 2.0.3 tai 3.0) ja hajonta.csv, 
 jossa on kunkin joukkueen käyttämät ratakoodit.
 
+**Online** versio tulee tulevaisuudessa, mutta tässä ohjelmana hätäisimille.
+
 Palautetta saa antaa, sposti ihan ok.
 laatikkoon: viestihajonta
 domain: awot.fi
@@ -34,6 +36,24 @@ Jos on käytössä WSL (Linux subsystem for Windows) ja jokin Linux asennettuna 
 
 Jos ei ole WSL, niin helpointen tarvittavat komennot saa asentamalla [Git for Windows](https://gitforwindows.org/). Tällöin käytettävissä em. tarvittavat komennot myös Windowsissa.
 Työpöydällä kuvake **GitBash**
+
+##  Asennus
+
+```sh
+git clone https://github.com/kshji/viestihajonta.git
+cd viestihajonta
+# tassa hakemistossa suoritukset oheisen ohjeen mukaisesti
+```
+
+Tai lataa ko. paketti ZIP tiedostona ja pura se johonkin kansioon
+[ZIP-tiedosto](https://github.com/kshji/viestihajonta/archive/refs/heads/main.zip)
+
+## Suoritus Windows
+* suorita em. GitBash
+* siirry em. kansioon, jonne purettu ko. paketti, esim: C\viestihajonta
+```sh
+cd /c/viestihajonta
+```
 
 ## Esimerkki
 Kansiossa esimerkki on mallitiedostoja. Sieltä voi kopioida kansioon **lahdedata** tarvittavat tiedostot ja suorittaa ko. tarkistus. 
