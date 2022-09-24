@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<CourseData xmlns="http://www.orienteering.org/datastandard/3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" iofVersion="3.0" createTime="2022-09-20T15:09:35.587+03:00" creator="OCAD 2020.6.1.3868">
+  <Event>
+    <Name>Event</Name>
+  </Event>
+  <RaceCourseData>
+    <Map>
+      <Scale>15000</Scale>
+      <!-- extent of ocad map-->
+      <MapPositionTopLeft x="-356.4" y="237.4" unit="mm"/>
+      <MapPositionBottomRight x="-30.1" y="-129.8" unit="mm"/>
+    </Map>
+    <Control>
+      <Id>L1</Id>
+      <Position lng="30.159381" lat="62.789279" />
+      <MapPosition x="-286.4" y="161.5" unit="mm" />
+    </Control>
+    <Control>
+      <Id>31</Id>
+      <Position lng="30.161171" lat="62.788411" />
+      <MapPosition x="-279.1" y="156.4" unit="mm" />
+    </Control>
+    <Control>
+      <Id>32</Id>
+      <Position lng="30.162639" lat="62.788340" />
+      <MapPosition x="-274.1" y="156.9" unit="mm" />
+    </Control>
+    <Control>
+      <Id>33</Id>
+      <Position lng="30.163798" lat="62.788772" />
+      <MapPosition x="-270.9" y="160.8" unit="mm" />
+    </Control>
+    <Control>
+      <Id>52</Id>
+      <Position lng="30.162326" lat="62.791414" />
+      <MapPosition x="-279.9" y="179.0" unit="mm" />
+    </Control>
+    <Control>
+      <Id>61</Id>
+      <Position lng="30.163826" lat="62.790372" />
+      <MapPosition x="-273.3" y="172.5" unit="mm" />
+    </Control>
+    <Control>
+      <Id>129</Id>
+      <Position lng="30.166972" lat="62.788964" />
+      <MapPosition x="-260.6" y="164.5" unit="mm" />
+    </Control>
+    <Control>
+      <Id>741</Id>
+      <Position lng="30.160635" lat="62.790539" />
+      <MapPosition x="-284.1" y="171.5" unit="mm" />
+    </Control>
+    <Control>
+      <Id>888</Id>
+      <Position lng="30.160375" lat="62.791027" />
+      <MapPosition x="-285.8" y="174.9" unit="mm" />
+    </Control>
+    <Control>
+      <Id>M1</Id>
+      <Position lng="30.153552" lat="62.788376" />
+      <MapPosition x="-304.5" y="150.8" unit="mm" />
+    </Control>
+
+    <Course>
+      <Name>V11</Name>
+      <Length>1310</Length>
+      <Climb>0</Climb>
+      <CourseControl type="Start">
+        <Control>L1</Control>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>31</Control>
+        <LegLength>133</LegLength>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>129</Control>
+        <LegLength>302</LegLength>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>61</Control>
+        <LegLength>225</LegLength>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>741</Control>
+        <LegLength>164</LegLength>
+      </CourseControl>
+      <CourseControl type="Finish">
+        <Control>M1</Control>
+        <LegLength>489</LegLength>
+      </CourseControl>
+    </Course>
+
+    <Course>
+      <Name>V21</Name>
+      <Length>1310</Length>
+      <Climb>0</Climb>
+      <CourseControl type="Start">
+        <Control>L1</Control>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>32</Control>
+        <LegLength>196</LegLength>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>129</Control>
+        <LegLength>232</LegLength>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>61</Control>
+        <LegLength>225</LegLength>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>741</Control>
+        <LegLength>164</LegLength>
+      </CourseControl>
+      <CourseControl type="Finish">
+        <Control>M1</Control>
+        <LegLength>489</LegLength>
+      </CourseControl>
+    </Course>
+
+    <Course>
+      <Name>V31</Name>
+      <Length>1270</Length>
+      <Climb>0</Climb>
+      <CourseControl type="Start">
+        <Control>L1</Control>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>33</Control>
+        <LegLength>232</LegLength>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>129</Control>
+        <LegLength>163</LegLength>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>61</Control>
+        <LegLength>225</LegLength>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>741</Control>
+        <LegLength>164</LegLength>
+      </CourseControl>
+      <CourseControl type="Finish">
+        <Control>M1</Control>
+        <LegLength>489</LegLength>
+      </CourseControl>
+    </Course>
+
+    <Course>
+      <Name>V12</Name>
+      <Length>1420</Length>
+      <Climb>0</Climb>
+      <CourseControl type="Start">
+        <Control>L1</Control>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>31</Control>
+        <LegLength>133</LegLength>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>129</Control>
+        <LegLength>302</LegLength>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>52</Control>
+        <LegLength>362</LegLength>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>741</Control>
+        <LegLength>130</LegLength>
+      </CourseControl>
+      <CourseControl type="Finish">
+        <Control>M1</Control>
+        <LegLength>489</LegLength>
+      </CourseControl>
+    </Course>
+
+    <Course>
+      <Name>V22</Name>
+      <Length>1410</Length>
+      <Climb>0</Climb>
+      <CourseControl type="Start">
+        <Control>L1</Control>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>32</Control>
+        <LegLength>196</LegLength>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>129</Control>
+        <LegLength>232</LegLength>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>52</Control>
+        <LegLength>362</LegLength>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>741</Control>
+        <LegLength>130</LegLength>
+      </CourseControl>
+      <CourseControl type="Finish">
+        <Control>M1</Control>
+        <LegLength>489</LegLength>
+      </CourseControl>
+    </Course>
+
+    <Course>
+      <Name>V32</Name>
+      <Length>1380</Length>
+      <Climb>0</Climb>
+      <CourseControl type="Start">
+        <Control>L1</Control>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>33</Control>
+        <LegLength>232</LegLength>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>129</Control>
+        <LegLength>163</LegLength>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>52</Control>
+        <LegLength>362</LegLength>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>741</Control>
+        <LegLength>130</LegLength>
+      </CourseControl>
+      <CourseControl type="Finish">
+        <Control>M1</Control>
+        <LegLength>489</LegLength>
+      </CourseControl>
+    </Course>
+
+    <Course>
+      <Name>V13</Name>
+      <Length>1410</Length>
+      <Climb>0</Climb>
+      <CourseControl type="Start">
+        <Control>L1</Control>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>31</Control>
+        <LegLength>133</LegLength>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>129</Control>
+        <LegLength>302</LegLength>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>888</Control>
+        <LegLength>408</LegLength>
+      </CourseControl>
+      <CourseControl type="Finish">
+        <Control>M1</Control>
+        <LegLength>567</LegLength>
+      </CourseControl>
+    </Course>
+
+    <Course>
+      <Name>V23</Name>
+      <Length>1400</Length>
+      <Climb>0</Climb>
+      <CourseControl type="Start">
+        <Control>L1</Control>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>32</Control>
+        <LegLength>196</LegLength>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>129</Control>
+        <LegLength>232</LegLength>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>888</Control>
+        <LegLength>408</LegLength>
+      </CourseControl>
+      <CourseControl type="Finish">
+        <Control>M1</Control>
+        <LegLength>567</LegLength>
+      </CourseControl>
+    </Course>
+
+    <Course>
+      <Name>V33</Name>
+      <Length>1370</Length>
+      <Climb>0</Climb>
+      <CourseControl type="Start">
+        <Control>L1</Control>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>33</Control>
+        <LegLength>232</LegLength>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>129</Control>
+        <LegLength>163</LegLength>
+      </CourseControl>
+      <CourseControl type="Control">
+        <Control>888</Control>
+        <LegLength>408</LegLength>
+      </CourseControl>
+      <CourseControl type="Finish">
+        <Control>M1</Control>
+        <LegLength>567</LegLength>
+      </CourseControl>
+    </Course>
+    <ClassCourseAssignment>
+      <ClassName>V11</ClassName>
+      <CourseName>V11</CourseName>
+    </ClassCourseAssignment>
+    <ClassCourseAssignment>
+      <ClassName>V21</ClassName>
+      <CourseName>V21</CourseName>
+    </ClassCourseAssignment>
+    <ClassCourseAssignment>
+      <ClassName>V31</ClassName>
+      <CourseName>V31</CourseName>
+    </ClassCourseAssignment>
+    <ClassCourseAssignment>
+      <ClassName>V12</ClassName>
+      <CourseName>V12</CourseName>
+    </ClassCourseAssignment>
+    <ClassCourseAssignment>
+      <ClassName>V22</ClassName>
+      <CourseName>V22</CourseName>
+    </ClassCourseAssignment>
+    <ClassCourseAssignment>
+      <ClassName>V32</ClassName>
+      <CourseName>V32</CourseName>
+    </ClassCourseAssignment>
+    <ClassCourseAssignment>
+      <ClassName>V13</ClassName>
+      <CourseName>V13</CourseName>
+    </ClassCourseAssignment>
+    <ClassCourseAssignment>
+      <ClassName>V23</ClassName>
+      <CourseName>V23</CourseName>
+    </ClassCourseAssignment>
+    <ClassCourseAssignment>
+      <ClassName>V33</ClassName>
+      <CourseName>V33</CourseName>
+    </ClassCourseAssignment>
+
+  </RaceCourseData>
+</CourseData>
