@@ -10,6 +10,7 @@ BEGIN {
 	FS=";"
 	OFS="|"
 	maxosuus=7
+	debug=0
 	}
 
 NR==1 { # csv otsikko
@@ -17,8 +18,16 @@ NR==1 { # csv otsikko
 		kentta[$fld]=fld
 		#print kentta[fld]
 		}
-	#print kentta["Sarja"]
-	#print kentta["No"]
+	if (debug<1) next
+	print kentta["Sarja"]
+	print kentta["No"]
+	print kentta["Rata-1"]
+	print kentta["Rata-2"]
+	print kentta["Rata-3"]
+	print kentta["Rata-4"]
+	print kentta["Rata-5"]
+	print kentta["Rata-6"]
+	print kentta["Rata-7"]
 	next
 	}
 NF < 2 { next }
@@ -26,10 +35,15 @@ NF < 2 { next }
 
 	sarja=$kentta["Sarja"]
 	joukkue=$kentta["No"]
-	#print sarja,joukkue	
+	if (debug>0) print sarja,joukkue	
 	for (osuus=1;osuus<=maxosuus;osuus++) {
 		kenttanimi="Rata-" osuus
-		hajonta=$kentta[kenttanimi]
+		kenttanr=kentta[kenttanimi]
+		if (kenttanr == "" ) continue	
+		
+		hajonta=$kenttanr
+		gsub(/ /,"",hajonta)
+		if (debug>0) print "K:",kenttanimi,kenttanr,hajonta
 		if (hajonta != "") {
 			print sarja,joukkue,osuus,hajonta
 			}
