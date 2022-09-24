@@ -56,12 +56,17 @@ cd /c/viestihajonta
 ```
 
 ## Esimerkki
-Kansiossa esimerkki on mallitiedostoja. Sieltä voi kopioida kansioon **lahdedata** tarvittavat tiedostot ja suorittaa ko. tarkistus. 
+Kansiossa **esimerkki** on mallitiedostoja. Sieltä voi kopioida kansioon **lahdedata** tarvittavat tiedostot ja suorittaa ko. tarkistus. 
 Malliaineisto on Jukolan kenraalista, jossa kolme osuutta.
 
 Ko. kansiossa voit ajaa testiaineistot suoraan komennoilla testi1.sh ... testi5.sh
 ```sh
 ./testi1.sh
+```
+## Suoritusoikeudet .sh tiedostoilla
+Jollei ole, lisää suoritusoikeus:
+```sh
+chmod a+rx *.sh esimerkki/*.sh
 ```
 
 ## Ennakkotarkistus, lähde ratatiedosto (XML) ja hajonnat joukkueittain
