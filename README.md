@@ -132,7 +132,6 @@ VER-rivi on tulos, joka piti saada.
 * 313 joukkueella 32-129 kahdesti vaikka pitää olla vain kerran
 * 313 joukkueella 0-32 kahdesti vaikka pitää olla vain kerran
 
-Tässä tapauksessa virhe on oikeasti toisinpain, koska vertailujoukkue 310 on viimeinen hajonta V33, jossa on juuri tuo virhe.
 ```text
 VER :0-31|1|0-32|1|0-33|1|129-52|1|129-61|1|129-888|1|31-129|1|32-129|1|33-129|1|52-741|1|61-741|1|741-M|2|888-M|1
  313:0-31|1|0-32|2|129-52|1|129-61|1|129-888|1|31-129|1|32-129|2|52-741|1|61-741|1|741-M|2|888-M|1
