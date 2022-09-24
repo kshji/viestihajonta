@@ -50,11 +50,11 @@ Ko. kansiossa voit ajaa testiaineistot suoraan komennoilla testi1.sh ... testi5.
 Tehdään tarkistus, kun on radat tehty ja tiedossa on mitä hajontoja millekin joukkueelle.
 
  * Esim. Ocadistä ratatiedot IOF XML 2.0.3 formaatissa
- *  Ratatiedot :: Vie :: radat (XML, IOF Versio 2.0.3) ... nimellä **radat.xml** - toki voit nimetä muullakin nimellä, tämä tarkistusohjelma etsii ratatiedot ko. nimisestä tiedostosta.
+   *  Ratatiedot :: Vie :: radat (XML, IOF Versio 2.0.3) ... nimellä **radat.xml** - toki voit nimetä muullakin nimellä, tämä tarkistusohjelma etsii ratatiedot ko. nimisestä tiedostosta.
  * joukkueittain hajonnat tiedostossa **hajonta.csv**
- *  muoto on mitä Pirilä-ohjelma tukee suoraan
- *  sarakkeita voi olla muitakin, tämä järjestelmä käyttää csv:stä vain ko. sarakkeita
- *  kaikki sarjat samassa tiedostossa
+   *  muoto on mitä Pirilä-ohjelma tukee suoraan
+   *  sarakkeita voi olla muitakin, tämä järjestelmä käyttää csv:stä vain ko. sarakkeita
+   *  kaikki sarjat samassa tiedostossa
 ```csv hajonta.csv
 Sarja;No;Rata-1;Rata-2;Rata-3
 H21;1;AA;BB;CC
