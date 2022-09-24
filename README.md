@@ -1,0 +1,2 @@
+# viestihajonta
+Suunnistuksen viestihajontojen tarkistus
