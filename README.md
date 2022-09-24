@@ -43,11 +43,11 @@ Malliaineisto on Jukolan kenraalista, jossa kole osuutta.
 Tehdään tarkistus, kun on radat tehty ja tiedossa on mitä hajontoja millekin joukkueelle.
 
  * Esim. Ocadistä ratatiedot IOF XML 2.0.3 formaatissa
- ** Ratatiedot :: Vie :: radat (XML, IOF Versio 2.0.3) ... nimellä **radat.xml** - toki voit nimetä muullakin nimellä, tämä tarkistusohjelma etsii ratatiedot ko. nimisstä tiedostosta.
+  * Ratatiedot :: Vie :: radat (XML, IOF Versio 2.0.3) ... nimellä **radat.xml** - toki voit nimetä muullakin nimellä, tämä tarkistusohjelma etsii ratatiedot ko. nimisstä tiedostosta.
  * joukkueittain hajonnat tiedostossa **hajonta.csv**
- ** muoto on mitä Pirilä-ohjelma tukee suoraan
- ** sarakkeita voi olla muitakin, tämä järjestelmä käyttää csv:stä vain ko. sarakkeita
- ** kaikki sarjat samassa tiedostossa
+  * muoto on mitä Pirilä-ohjelma tukee suoraan
+  * sarakkeita voi olla muitakin, tämä järjestelmä käyttää csv:stä vain ko. sarakkeita
+  * kaikki sarjat samassa tiedostossa
 ```csv
 Sarja;No;Rata-1;Rata-2;Rata-3
 H21;1;AA;BB;CC
@@ -62,7 +62,7 @@ Ko. kaksi tiedostoa oltava kansiossa lahdedata
 ```sh
 ./pohjatiedot.csv.sh
 ```
-* kansiossa **tulos** on ns. normalisoidussa muodossa kilpailun tiedot tarkistus.*.txt
+* kansiossa **tulos** on ns. normalisoidussa muodossa kilpailun tiedot tarkistus.*.txrt
 * ko. tiedot voi täten tuottaa muutenkin, jotta komento **tarkistus.sh** voidaan suorittaaa.
 
 ```sh
