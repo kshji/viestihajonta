@@ -50,7 +50,7 @@ Tai lataa ko. paketti ZIP tiedostona ja pura se johonkin kansioon
 
 ## Suoritus Windows
 * suorita em. GitBash
-* siirry em. kansioon, jonne purettu ko. paketti, esim: C\viestihajonta
+* siirry em. kansioon, jonne purettu ko. paketti, esim: C:\viestihajonta
 ```sh
 cd /c/viestihajonta
 ```
