@@ -24,7 +24,7 @@ domain: awot.fi
 Liperissä 24.9.2022, Jukka Inkeri
 
 ## Vaaditut ohjelmistot
-### Linux
+### Linux ja OS-X
 Oletettavasti kaikki on jo valmiina
  * bash
  * gawk
