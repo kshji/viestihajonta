@@ -29,6 +29,8 @@ $1 == "DAT" && $2 == "Name" &&  $3 ~ /CourseData\/RaceCourseData\/Course\/Name$/
 		rata=0  
 		rastinro=0
 		ratanimi=$NF
+		# jos on Ocad viestiversio, niin alussa on sarjannimi ja _
+		#gsub(/^.*_/,"",ratanimi)
 		for (r=1;r<=maxrastilkm;r++) {
 			koodit[r]=""
 			}

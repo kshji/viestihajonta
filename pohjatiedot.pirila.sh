@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 # pohjatiedot.pirila.sh
+# v. 2022-09-25
 # tuottaa tarvittavat pohjatiedot kilpailija- ja ratatiedoista, jotta voidaan tehda hajontatarkistus
 # Kaytetaan Pirila-ohjelmasta tehtyja radat.xml ja pirilasta.xml
 #
@@ -7,7 +8,7 @@ lahde=lahdedata/pirilasta.xml
 lahderata=lahdedata/radat.xml
 
 mkdir -p tmp tulos 2>/dev/null
-rm -f tulos/*.tarkistus*.csv tulos/*.tarkistus*.txt tmp/*.tmp 2>/dev/null
+rm -f tulos/*.tarkistus*.csv tulos/*.tarkistus*.txt tulos/hajonta.csv tmp/*.tmp 2>/dev/null
 
 #gawk -f get.data.awk "$lahde" > tulos/pirilasta_xmlpath.txt
 
@@ -19,7 +20,7 @@ gawk -f get.data.awk "$lahde" | gawk -f get.joukkueet.awk > tulos/tarkistus.jouk
 
 # hajonnat
 # toimii iof 2.0.3 ja iof 3.0
-gawk -f  get.data.awk "$lahderata" | gawk -f get.hajonnat.awk > tulos/tarkistus.hajonnat.csv
+#gawk -f  get.data.awk "$lahderata" | gawk -f get.hajonnat.awk > tulos/tarkistus.hajonnat.csv
 
 # rastivalit
 # eri versio iof 2.0.3 ja 3.0

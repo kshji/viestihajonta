@@ -19,6 +19,8 @@ $1 == "DAT" && $2 == "CourseName" &&  $3 ~ /CourseName$/  {
 		#print $2,$NF 
 		muistissa=1
 		ratanimi=$NF
+		# jos on Ocad viestiversio, niin alussa on sarjannimi ja _
+                gsub(/^.*_/,"",ratanimi)
 		next
 		}
 END {

@@ -1,11 +1,12 @@
 #!/usr/bin/bash
 # pohjatiedot.csv.sh
+# v. 2022-09-25
 # tuottaa tarvittavat pohjatiedot kilpailija- ja ratatiedoista, jotta voidaan tehda hajontatarkistus
 # Kaytetaan Ocad tiedostoa ja hajonta.csv
 #
 
 mkdir -p tmp tulos 2>/dev/null
-rm -f tulos/*.tarkistus*.csv tulos/*.tarkistus*.txt tmp/*.tmp 2>/dev/null
+rm -f tulos/*.tarkistus*.csv tulos/*.tarkistus*.txt tulos/hajonta.csv tmp/*.tmp 2>/dev/null
 lahde=lahdedata/hajonta.csv
 lahderata=lahdedata/radat.xml
 
@@ -17,7 +18,7 @@ gawk -f get.joukkueet.csv.awk "$lahde" > tulos/tarkistus.joukkueet.csv
 
 # hajonnat
 # toimii iof 2.0.3 ja iof 3.0
-gawk -f get.data.awk "$lahderata" | gawk -f get.hajonnat.awk > tulos/tarkistus.hajonnat.csv
+#gawk -f get.data.awk "$lahderata" | gawk -f get.hajonnat.awk > tulos/tarkistus.hajonnat.csv
 
 # rastivalit
 # eri versio iof 2.0.3 ja 3.0
