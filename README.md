@@ -72,6 +72,11 @@ Jollei ole, lisää suoritusoikeus:
 ```sh
 chmod a+rx *.sh esimerkki/*.sh
 ```
+## Toimintaperiaate
+ * muodostetaan lähdeaineistosta normalisoitu formaatti
+ * tarkastus tehdään aika normalisoidusta formaatista - yksi tarkastusohjelma vain ja vain, oli lähdedata mikä vaan
+ * jos on uusi lähdeaineisto, niin tarvitsee rakentaa sille oma pohjatiedot-käsittely normalisoituun formaattiin
+ * tulos kansiossa voi katsoa millaisia normalisoituja tiedostoja tarvitaan, ovat csv-tiedostoja, mutta erottimena |
 
 ## Ennakkotarkistus, lähde ratatiedosto (XML) ja hajonnat joukkueittain csv-tiedostosta
 **radat.xml** ja **hajonta.csv**
