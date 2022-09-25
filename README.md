@@ -5,15 +5,17 @@
 Suunnistuksen viestihajontojen tarkistus. Soveltuu myös henkilökohtaisten kilpailujen hajontojen tarkastukseen.
 
 Tarkistetaan rastivälitasolla hajonnat eikä vain ratojen hajontatunnuksilla.
-Virhe voi tapahtua esim. siinä, että hajontakoodit olettaa sisältävän tietyn hajonnan, mutta ratatiedostossa onkin eri hajonta.
+Virhe voi tapahtua esim. siinä, että hajontakoodit olettaa sisältävän tietyn hajonnan, 
+mutta ratatiedostossa onkin eri hajonta.
 
-Tämä systeemi tarkastaa joukkueiden juoksemat rastivälit, että jokainen joukkue on suorittanut samat rastivälit ja vain samat
-rastivälit ja vieläpä yhtä monta kertaa.
+Tämä systeemi tarkastaa joukkueiden juoksemat rastivälit, että jokainen joukkue on suorittanut samat rastivälit 
+ja vain samat rastivälit ja vieläpä yhtä monta kertaa.
 
-Kunkin sarjan 1. joukkueen rastivälipaketti toimii vertailuna. Jos siinä on virhe, niin kaikki muut joukkueet päätyvät virhelistalle.
+Kunkin sarjan 1. joukkueen rastivälipaketti toimii vertailuna. Jos siinä on virhe, 
+niin kaikki muut joukkueet päätyvät virhelistalle.
 
-Tarkistuksen voi tehdä jo ennen tulospalveluun viemistä, kunhan on ratatiedosto (XML IOF 2.0.3 tai 3.0) ja hajonta.csv, 
-jossa on kunkin joukkueen käyttämät ratakoodit.
+Tarkistuksen voi tehdä jo ennen tulospalveluun viemistä, kunhan on ratatiedosto (XML IOF 2.0.3 tai 3.0) 
+ja hajonta.csv, jossa on kunkin joukkueen käyttämät ratakoodit.
 
 **Online** versio tulee tulevaisuudessa, mutta tässä ohjelmana hätäisimille.
 
@@ -21,7 +23,7 @@ Palautetta saa antaa, sposti ihan ok.
 laatikkoon: viestihajonta
 domain: awot.fi
 
-Liperissä 24.9.2022, Jukka Inkeri
+Liperissä 25.9.2022, Jukka Inkeri
 
 ## Vaaditut ohjelmistot
 ### Linux ja OS-X
@@ -30,6 +32,8 @@ Oletettavasti kaikki on jo valmiina
  * gawk
  * sort
  * grep
+ * sed
+ * tr
 
 ### Windows
 Jos on käytössä WSL (Linux subsystem for Windows) ja jokin Linux asennettuna esim. Ubuntu, niin löytyy ko. komennot kuten Linuxeissa yleensäkin.
@@ -69,7 +73,7 @@ Jollei ole, lisää suoritusoikeus:
 chmod a+rx *.sh esimerkki/*.sh
 ```
 
-## Ennakkotarkistus, lähde ratatiedosto (XML) ja hajonnat joukkueittain
+## Ennakkotarkistus, lähde ratatiedosto (XML) ja hajonnat joukkueittain csv-tiedostosta
 **radat.xml** ja **hajonta.csv**
 
 Tehdään tarkistus, kun on radat tehty ja tiedossa on mitä hajontoja millekin joukkueelle.
@@ -80,13 +84,15 @@ Tehdään tarkistus, kun on radat tehty ja tiedossa on mitä hajontoja millekin 
    *  muoto on mitä Pirilä-ohjelma tukee suoraan
    *  sarakkeita voi olla muitakin, tämä järjestelmä käyttää csv:stä vain ko. sarakkeita
    *  kaikki sarjat samassa tiedostossa
-```csv hajonta.csv
+
+Esimerkki: hajonta.csv
+```csv
 Sarja;No;Rata-1;Rata-2;Rata-3
 H21;1;AA;BB;CC
 H21;2;AB;BA;CC
 H21;3;BA;CB;AC
 ```
-Ko. kaksi tiedostoa oltava kansiossa lahdedata
+Ko. kaksi tiedostoa oltava kansiossa **lahdedata**
 * radat.xml
 * hajonta.csv
 
@@ -97,8 +103,6 @@ Ko. kaksi tiedostoa oltava kansiossa lahdedata
 * kansiossa **tulos** on ns. normalisoidussa muodossa kilpailun tiedot tarkistus.*.txt
 * ko. tiedot voi täten tuottaa muutenkin, jotta komento **tarkistus.sh** voidaan suorittaaa.
 
-```sh
-```
 
 ## Tarkistus tulospalveluohjelman tiedoilla, lähde ratatiedosto (XML) 
 **radat.xml** ja **pirilasta.xml**
@@ -111,6 +115,41 @@ Lopullinen tarkistus tulee tehdä sillä tiedolla, joka on tulospalveluohjelmass
 ```sh
 ./pohjatiedot.pirila.sh
 ```
+
+## Ennakkotarkistus, lähde ratatiedosto (XML) ja joukkuehajonnat Ocad-ohjelmasta 
+**radat.xml** ja **joukkuehajonnat.txt**
+
+Radat tehty Ocad:ssä viestihajontoina.
+* tuotetaan Ocad:stä radat.xml (IOF 3.0)
+* tuotetaan Ocad:stä joukkuehajonnat.txt 
+
+Oheisessa ohjedokumentissä (pdf) on tarkemmin kuvaus kuinka Ocad:stä tehdään ko. lähdeaineisto.
+Ocad:n ongema on ettei hajontoja voi vähentää Farstasta esim. tupla-Vännekseen. Tästä syystä 
+tehdään Ocadiin hajonnat omina ratoina, joka tietysti nostaa riskikerrointa aikaiseksi virheitä.
+
+Tehdään tarkistus, kun on radat tehty ja tiedossa on mitä hajontoja millekin joukkueelle.
+
+Tämän pohja-aineiston käsittely tuottaa sivutuotteena **tulos/hajonta.csv** Pirilän muotoisen 
+hajonnat joukkueittain tiedoston. Ratakoodeja syntyy perus hajontamallissa ihan turhaan, mutta jos
+käytetään farstaa ja kelpaa oletusarvonta joukkeiden hajonnoiksi, niin tätäkin voi käyttää.
+
+Usein tämä versio toimii esitarkastuksena ennen kuin aloitetaan tehdä jokaista hajonta omaksi radaksi Ocadiin.
+
+Ko. kaksi tiedostoa oltava kansiossa **lahdedata**
+* radat.xml
+* joukkuehajonnat.txt
+
+### pohjatiedot tarkistukselle haetaan em. tiedostoista
+```sh
+./pohjatiedot.ocad.sh
+```
+* kansiossa **tulos** on ns. normalisoidussa muodossa kilpailun tiedot tarkistus.*.txt
+* ko. tiedot voi täten tuottaa muutenkin, jotta komento **tarkistus.sh** voidaan suorittaaa.
+* kansioon tulos on tuotettu sivutuotteena Piril'-ohjelman hyväksymä **hajonta.csv**, vertaa csv-versio edellä
+
+
+## Tarkistus tulospalveluohjelman tiedoilla, lähde ratatiedosto (XML) 
+
 
 ## Hajonnat tarkistus
 ### pohja-aineisto tehty em. jommasta kummasta lähteestä
