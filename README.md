@@ -128,7 +128,8 @@ Radat tehty Ocad:ssä viestihajontoina.
 * tuotetaan Ocad:stä radat.xml (IOF 3.0)
 * tuotetaan Ocad:stä joukkuehajonnat.txt 
 
-Oheisessa ohjedokumentissä (Hajontatarkistus.Lahtotiedot.Pirilasta.pdf) on tarkemmin kuvaus 
+Oheisessa ohjedokumentissä 
+[https://github.com/kshji/viestihajonta/raw/main/Hajontatarkistus.Lahtotiedot.Pirilasta.pdf](Hajontatarkistus.Lahtotiedot.Pirilasta.pdf) on tarkemmin kuvaus 
 kuinka Ocad:stä tehdään ko. lähdeaineisto.
 Ocad:n ongelma on ettei hajontoja voi vähentää Farstasta esim. tupla-Vännekseen. Tästä syystä 
 tehdään Ocadiin hajonnat omina ratoina, joka tietysti nostaa riskikerrointa saada aikaiseksi virheitä.
