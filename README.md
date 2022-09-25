@@ -78,6 +78,12 @@ chmod a+rx *.sh esimerkki/*.sh
  * jos on uusi lähdeaineisto, niin tarvitsee rakentaa sille oma pohjatiedot-käsittely normalisoituun formaattiin
  * **tulos** kansiossa voi katsoa millaisia normalisoituja tiedostoja tarvitaan, ovat csv-tiedostoja, mutta erottimena |
 
+## Ocad ohjeet
+
+Oheisessa dokumentissä
+[https://github.com/kshji/viestihajonta/raw/main/Hajontatarkistus.Lahtotiedot.Pirilasta.pdf](Hajontatarkistus.Lahtotiedot.Pirilasta.pdf) on tarkemmin kuvaus
+kuinka Ocad:stä tehdään ko. lähdeaineistot eri versioissa.
+
 ## Ennakkotarkistus, lähde ratatiedosto (XML) ja hajonnat joukkueittain csv-tiedostosta
 **radat.xml** ja **hajonta.csv**
 
