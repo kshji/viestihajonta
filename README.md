@@ -63,7 +63,7 @@ cd /c/viestihajonta
 Kansiossa **esimerkki** on mallitiedostoja. Sieltä voi kopioida kansioon **lahdedata** tarvittavat tiedostot ja suorittaa ko. tarkistus. 
 Malliaineisto on Jukolan kenraalista, jossa kolme osuutta.
 
-Ko. kansiossa voit ajaa testiaineistot suoraan komennoilla testi1.sh ... testi5.sh
+Ko. kansiossa voit ajaa testiaineistot suoraan komennoilla testi1.sh ... testi6.sh
 ```sh
 ./testi1.sh
 ```
@@ -123,9 +123,10 @@ Radat tehty Ocad:ssä viestihajontoina.
 * tuotetaan Ocad:stä radat.xml (IOF 3.0)
 * tuotetaan Ocad:stä joukkuehajonnat.txt 
 
-Oheisessa ohjedokumentissä (pdf) on tarkemmin kuvaus kuinka Ocad:stä tehdään ko. lähdeaineisto.
-Ocad:n ongema on ettei hajontoja voi vähentää Farstasta esim. tupla-Vännekseen. Tästä syystä 
-tehdään Ocadiin hajonnat omina ratoina, joka tietysti nostaa riskikerrointa aikaiseksi virheitä.
+Oheisessa ohjedokumentissä (Hajontatarkistus.Lahtotiedot.Pirilasta.pdf) on tarkemmin kuvaus 
+kuinka Ocad:stä tehdään ko. lähdeaineisto.
+Ocad:n ongelma on ettei hajontoja voi vähentää Farstasta esim. tupla-Vännekseen. Tästä syystä 
+tehdään Ocadiin hajonnat omina ratoina, joka tietysti nostaa riskikerrointa saada aikaiseksi virheitä.
 
 Tehdään tarkistus, kun on radat tehty ja tiedossa on mitä hajontoja millekin joukkueelle.
 
@@ -133,7 +134,7 @@ Tämän pohja-aineiston käsittely tuottaa sivutuotteena **tulos/hajonta.csv** P
 hajonnat joukkueittain tiedoston. Ratakoodeja syntyy perus hajontamallissa ihan turhaan, mutta jos
 käytetään farstaa ja kelpaa oletusarvonta joukkeiden hajonnoiksi, niin tätäkin voi käyttää.
 
-Usein tämä versio toimii esitarkastuksena ennen kuin aloitetaan tehdä jokaista hajonta omaksi radaksi Ocadiin.
+Usein tämä versio toimii esitarkastuksena ennen kuin aloitetaan tehdä jokaista hajontaa omaksi radaksi Ocadiin.
 
 Ko. kaksi tiedostoa oltava kansiossa **lahdedata**
 * radat.xml
@@ -145,7 +146,7 @@ Ko. kaksi tiedostoa oltava kansiossa **lahdedata**
 ```
 * kansiossa **tulos** on ns. normalisoidussa muodossa kilpailun tiedot tarkistus.*.txt
 * ko. tiedot voi täten tuottaa muutenkin, jotta komento **tarkistus.sh** voidaan suorittaaa.
-* kansioon tulos on tuotettu sivutuotteena Piril'-ohjelman hyväksymä **hajonta.csv**, vertaa csv-versio edellä
+* kansioon tulos on tuotettu sivutuotteena Pirilä-ohjelman hyväksymä **hajonta.csv**, vertaa csv-versio edellä
 
 
 ## Tarkistus tulospalveluohjelman tiedoilla, lähde ratatiedosto (XML) 
@@ -185,6 +186,14 @@ ERO: 32-129 = Joukkue:310 lkm:1 Joukkue:316 lkm:2
 ERO: 0-32 = Joukkue:310 lkm:1 Joukkue:316 lkm:2
 ```
 
+## Esimerkkitiedostoja Ocad
+Kansiossa maps on esimerkkejä Ocad:ssä.
+* relay1 on tässä käytetyn testi6.sh esimerkin testidata
+* Ocad:ssä monimutkaisemmat hajonnat vaatii hieman miettimistä, mutta syntyy kuitenkin ihan asiallisesti
+* suurin ongelma on ettei
+  ** hajontakoodeja voi itse määritellä, aina A-C tyylisesti jokaisessa hajontanipussa - haastava tarkastaa
+  ** ettei arvottua hajontakasaa joukkueille voi säätää esim. saman seuran useamman joukkueen kesken jne.
+  
 
 ## Historia
 * 2022 SM-Viestin hajontavirheet toimi kimmokkeena, versio 1 on luotu 24.9.2022
