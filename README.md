@@ -76,7 +76,7 @@ chmod a+rx *.sh esimerkki/*.sh
  * muodostetaan lähdeaineistosta normalisoitu formaatti
  * tarkastus tehdään aina normalisoidusta formaatista - yksi tarkastusohjelma vain ja vain, oli lähdedata mikä vaan
  * jos on uusi lähdeaineisto, niin tarvitsee rakentaa sille oma pohjatiedot-käsittely normalisoituun formaattiin
- * tulos kansiossa voi katsoa millaisia normalisoituja tiedostoja tarvitaan, ovat csv-tiedostoja, mutta erottimena |
+ * **tulos** kansiossa voi katsoa millaisia normalisoituja tiedostoja tarvitaan, ovat csv-tiedostoja, mutta erottimena |
 
 ## Ennakkotarkistus, lähde ratatiedosto (XML) ja hajonnat joukkueittain csv-tiedostosta
 **radat.xml** ja **hajonta.csv**
@@ -105,7 +105,7 @@ Ko. kaksi tiedostoa oltava kansiossa **lahdedata**
 ```sh
 ./pohjatiedot.csv.sh
 ```
-* kansiossa **tulos** on ns. normalisoidussa muodossa kilpailun tiedot tarkistus.*.txt
+* kansiossa **tulos** on ns. normalisoidussa muodossa kilpailun tiedot **tarkistus.*.csv**
 * ko. tiedot voi täten tuottaa muutenkin, jotta komento **tarkistus.sh** voidaan suorittaaa.
 
 
@@ -138,6 +138,8 @@ Tehdään tarkistus, kun on radat tehty ja tiedossa on mitä hajontoja millekin 
 Tämän pohja-aineiston käsittely tuottaa sivutuotteena **tulos/hajonta.csv** Pirilän muotoisen 
 hajonnat joukkueittain tiedoston. Ratakoodeja syntyy perus hajontamallissa ihan turhaan, mutta jos
 käytetään farstaa ja kelpaa oletusarvonta joukkeiden hajonnoiksi, niin tätäkin voi käyttää.
+Tässä mallissa kaikki ylläpito pitää tehdä Ocad:ssä, ainakin hajontoihin, koska sama hajonta voi olla useana 
+samana hajontana esim. 1AAA, 2AAA, 3AAA voivat olla sama hajonta tai ei. 
 
 Usein tämä versio toimii esitarkastuksena ennen kuin aloitetaan tehdä jokaista hajontaa omaksi radaksi Ocadiin.
 
