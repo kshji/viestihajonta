@@ -191,8 +191,8 @@ Kansiossa maps on esimerkkejä Ocad:ssä.
 * relay1 on tässä käytetyn testi6.sh esimerkin testidata
 * Ocad:ssä monimutkaisemmat hajonnat vaatii hieman miettimistä, mutta syntyy kuitenkin ihan asiallisesti
 * suurin ongelma on ettei
-  ** hajontakoodeja voi itse määritellä, aina A-C tyylisesti jokaisessa hajontanipussa - haastava tarkastaa
-  ** ettei arvottua hajontakasaa joukkueille voi säätää esim. saman seuran useamman joukkueen kesken jne.
+  * hajontakoodeja voi itse määritellä, aina A-C tyylisesti jokaisessa hajontanipussa - haastava tarkastaa
+  * ettei arvottua hajontakasaa joukkueille voi säätää esim. saman seuran useamman joukkueen kesken jne.
   
 
 ## Historia
