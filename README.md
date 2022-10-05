@@ -1,4 +1,4 @@
-# Viestihajonta tarkistusjärjestelmä
+# Viestihajonta tarkistusjärjestelmä - Orienteering forking/variants checking 
 
 (c) Jukka Inkeri  2022-
 
@@ -75,8 +75,10 @@ chmod a+rx *.sh esimerkki/*.sh
 ## Toimintaperiaate
  * muodostetaan lähdeaineistosta normalisoitu formaatti
  * tarkastus tehdään aina normalisoidusta formaatista - yksi tarkastusohjelma vain ja vain, oli lähdedata mikä vaan
- * jos on uusi lähdeaineisto, niin tarvitsee rakentaa sille oma pohjatiedot-käsittely normalisoituun formaattiin
- * **tulos** kansiossa voi katsoa millaisia normalisoituja tiedostoja tarvitaan, ovat csv-tiedostoja, mutta erottimena |
+ * jos on uusi lähdeaineistotyyppi, niin tarvitsee rakentaa sille oma pohjatiedot-käsittely (source.XXXX.sh) normalisoituun formaattiin
+ * tmp/XXXX/**results** kansiossa voi katsoa millaisia normalisoituja tiedostoja tarvitaan, ovat csv-tiedostoja, mutta erottimena |
+ * lähdedata voi olla missä tahansa, mutta ko. paketissa on valmiina kansio **sourcedata** sitä varten, että sinne voi tehdä oman kansion kullekin kisalle
+   * suositus: hakemistonimissä ja tiedostonimissä vain merkkejä a-z ja 0-9. Ei erikoismerkkejä, ei öäå, ei tyhjeitä
 
 ## Ocad ohjeet
 
@@ -84,10 +86,35 @@ Oheisessa dokumentissä
 [https://github.com/kshji/viestihajonta/raw/main/Hajontatarkistus.Lahtotiedot.Pirilasta.pdf](Hajontatarkistus.Lahtotiedot.Pirilasta.pdf) on tarkemmin kuvaus
 kuinka Ocad:stä tehdään ko. lähdeaineistot eri versioissa.
 
-## Ennakkotarkistus, lähde ratatiedosto (XML) ja hajonnat joukkueittain csv-tiedostosta
-**radat.xml** ja **hajonta.csv**
+## Lähdemateriaali versio 1 - Ocad:stä ratatiedosto (XML 3.0) ja hajonnat joukkueittain txt-tiedostosta 
+**radat.xml** ja **joukkuehajonnat.txt**
 
-Tehdään tarkistus, kun on radat tehty ja tiedossa on mitä hajontoja millekin joukkueelle.
+Radat tehty Ocad:ssä viestihajontoina.
+* tuotetaan Ocad:stä radat.xml (IOF 3.0)
+* tuotetaan Ocad:stä joukkuehajonnat.txt 
+
+**Huom:** **radat.xml** pitää olla IOF 3.0 formaatissa tuotettuna Ocad:stä.
+
+Tämä tarkistushan pitäisi olla aina ok. 
+Tai jos antaa virheen, niin joko viestiradoissa jotain pahasti pielessä tai Ocad:ssä on virhe.
+
+MUTTA voit tehdä niinkin, että teet em. tiedostot Ocad:stä ja sen jälkeen muokkaaat ko. tiedostoja esim. oletettujen parhaiden
+joukkueiden hajontoja vertailen/muokaten, että ovat järkeviä ja että seuran 1, 2, 3 jne. joukkueet ainakin aluksi ovat eri hajonnat.
+
+Tällä ajolla syntyy aputuloksena Pirilä-ohjelman tuntema **hajonta.lst** muotoinen tiedosto - voi lukea lähdedatana Pirilään.
+
+### tarkistus
+check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(txt) -m 1 
+```sh
+./check.variants.sh -c sourcedata/examples/relay1.course.Courses.v3.xml -t sourcedata/examples/relay1.course.Variations.txt -m 2 
+# tai
+./check.variants.sh -c sourcedata/examples/radat.ocad.v3.xml -t sourcedata/examples/joukkuehajonnat.txt -m 2 
+```
+
+## Lähdemateriaali versio 2 - ratatiedosto (XML) ja hajonnat joukkueittain csv-tiedostosta (Pirilän lst)
+**radat.xml** ja **hajonta.csv** tai **hajonta.lst**
+
+Tehdään tarkistus, kun on radat tehty ja tiedossa on mitä hajontoja millekin joukkueelle tarjoillaan.
 
  * Esim. Ocadistä ratatiedot IOF XML 2.0.3 formaatissa
    *  Ratatiedot :: Vie :: radat (XML, IOF Versio 2.0.3) ... nimellä **radat.xml** - toki voit nimetä muullakin nimellä, tämä tarkistusohjelma etsii ratatiedot ko. nimisestä tiedostosta.
@@ -103,36 +130,61 @@ H21;1;AA;BB;CC
 H21;2;AB;BA;CC
 H21;3;BA;CB;AC
 ```
-Ko. kaksi tiedostoa oltava kansiossa **lahdedata**
-* radat.xml
-* hajonta.csv
+Ko. kaksi tiedostoa oltava käytettävissä, nimentä vapaasti, esim:
+ * radat.xml
+ * hajonta.csv
 
-### pohjatiedot tarkistukselle haetaan em. tiedostoista
+### tarkistus
+check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) -m 2 
 ```sh
-./pohjatiedot.csv.sh
+./check.variants.sh -c sourcedata/examples/radat.v2.kenraali.xml -t sourcedata/examples/hajonta.kenraali.csv -m 2 
 ```
-* kansiossa **tulos** on ns. normalisoidussa muodossa kilpailun tiedot **tarkistus.*.csv**
-* ko. tiedot voi täten tuottaa muutenkin, jotta komento **tarkistus.sh** voidaan suorittaaa.
-
-
-## Tarkistus tulospalveluohjelman tiedoilla, lähde ratatiedosto (XML) 
+## Lähdemateriaali versio 3 - Pirilä-ohjelmisto - ratatiedosto (XML) ja  kilpalijatiedot (XML)
 **radat.xml** ja **pirilasta.xml**
 
-Lopullinen tarkistus tulee tehdä sillä tiedolla, joka on tulospalveluohjelmassa. Ohessa esimerkki Pirilä-ohjelmasta.
-* ratatiedot viety  tiedostoon **radat.xml**
-* kilpailijatiedot kaikki viety XML-tiedostoon **pirilasta.xml**
+Lopullinen tarkistus tulee tehdä sillä tiedolla, joka on tulospalveluohjelmassa, tässä tapauksessa Pirilä-ohjelmasta
+ * ratatiedot viety  tiedostoon **radat.xml**
+ * kilpailijatiedot kaikki viety XML-tiedostoon **pirilasta.xml**
+ * katso erillinen ohje: [https://github.com/kshji/viestihajonta/raw/main/Hajontatarkistus.Lahtotiedot.Pirilasta.pdf](Hajontatarkistus.Lahtotiedot.Pirilasta.pdf) on tarkemmin kuvattu, 
+kuinka ko. tiedostot tuotetaan
 
-### pohjatiedot tarkistukselle haetaan em. tiedostoista
+Tämän pohja-aineiston käsittely tuottaa sivutuotteena **results/hajonta.csv** Pirilän muotoisen 
+hajonnat joukkueittain tiedoston. Ratakoodeja syntyy perus hajontamallissa ihan turhaan, mutta jos
+käytetään farstaa ja kelpaa oletusarvonta joukkeiden hajonnoiksi, niin tätäkin voi käyttää.
+Tässä mallissa kaikki ylläpito pitää tehdä Ocad:ssä, ainakin hajontoihin, koska sama hajonta voi olla useana 
+samana hajontana esim. 1AAA, 2AAA, 3AAA voivat olla sama hajonta tai ei. 
+
+### tarkistus
+check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) -m 3 
 ```sh
-./pohjatiedot.pirila.sh
+./check.variants.sh -c sourcedata/examples/radat.v2.kenraali.xml -t sourcedata/examples/pirilasta.kenraali.xml -m 3 
 ```
 
-## Ennakkotarkistus, lähde ratatiedosto (XML) ja joukkuehajonnat Ocad-ohjelmasta 
-**radat.xml** ja **joukkuehajonnat.txt**
+## Lähdemateriaali versio 4 - aineisto on tuotettu muulla tavalla jo valmiiksi tämän järjestelmän csv-muotoon
+Kansiossa sourcedata/genericformat on esimerkkitiedostoja, jollaisia voi tuottaa valmiiksi.
+  * sarjat : check.class.csv
+  * hajontakoodit rasteineen :  check.controls.csv
+  * joukkueet hajontakoodeineen: check.teams.csv
 
-Radat tehty Ocad:ssä viestihajontoina.
-* tuotetaan Ocad:stä radat.xml (IOF 3.0)
-* tuotetaan Ocad:stä joukkuehajonnat.txt 
+### tarkistus
+check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) --classfile sarjartiedosto(csv) -m 4 
+```sh
+./check.variants.sh -c sourcedata/genericformat/check.controls.csv -t sourcedata/genericformat/check.teams.csv --classfile sourcedata/genericformat/check.class.csv  -m 4 
+```
+
+## Lopputulos
+Tarkistusajo kertoo lopuksi missä kansiossa on tarkistusajon kaikki tiedostot tallessa.
+
+Jos oli virheitä, ilmoittaa virheelliset sarjat. Ko. kansiosta löytyy ko. sarjan raportti.
+Esim. Jos sarjassa H21 on virhe, niin ilmoitetussa kansiossa on **H21.check.txt**, josta voi lukea mitä on pielessä.
+
+```tmp/JOKUhakemisto/results```
+* kansiossa on ns. normalisoidussa muodossa kilpailun tiedot **check.*.csv**
+* ko. tiedot voi täten tuottaa muutenkin, jotta tarkistus voidaan suorittaa, katso versio 4 ohjeet
+
+
+## Pirilä-ohjelmasta tarvittavat tiedostot
+Tarkistus tulospalveluohjelman tiedoilla (XML) ja ratatiedosto (XML).
 
 Oheisessa ohjedokumentissä 
 [https://github.com/kshji/viestihajonta/raw/main/Hajontatarkistus.Lahtotiedot.Pirilasta.pdf](Hajontatarkistus.Lahtotiedot.Pirilasta.pdf) on tarkemmin kuvaus 
@@ -140,41 +192,14 @@ kuinka Ocad:stä tehdään ko. lähdeaineisto.
 Ocad:n ongelma on ettei hajontoja voi vähentää Farstasta esim. tupla-Vännekseen. Tästä syystä 
 tehdään Ocadiin hajonnat omina ratoina, joka tietysti nostaa riskikerrointa saada aikaiseksi virheitä.
 
-Tehdään tarkistus, kun on radat tehty ja tiedossa on mitä hajontoja millekin joukkueelle.
-
-Tämän pohja-aineiston käsittely tuottaa sivutuotteena **tulos/hajonta.csv** Pirilän muotoisen 
-hajonnat joukkueittain tiedoston. Ratakoodeja syntyy perus hajontamallissa ihan turhaan, mutta jos
-käytetään farstaa ja kelpaa oletusarvonta joukkeiden hajonnoiksi, niin tätäkin voi käyttää.
-Tässä mallissa kaikki ylläpito pitää tehdä Ocad:ssä, ainakin hajontoihin, koska sama hajonta voi olla useana 
-samana hajontana esim. 1AAA, 2AAA, 3AAA voivat olla sama hajonta tai ei. 
-
-Usein tämä versio toimii esitarkastuksena ennen kuin aloitetaan tehdä jokaista hajontaa omaksi radaksi Ocadiin.
-
-Ko. kaksi tiedostoa oltava kansiossa **lahdedata**
-* radat.xml
-* joukkuehajonnat.txt
-
-### pohjatiedot tarkistukselle haetaan em. tiedostoista
-```sh
-./pohjatiedot.ocad.sh
-```
-* kansiossa **tulos** on ns. normalisoidussa muodossa kilpailun tiedot tarkistus.*.txt
-* ko. tiedot voi täten tuottaa muutenkin, jotta komento **tarkistus.sh** voidaan suorittaaa.
-* kansioon tulos on tuotettu sivutuotteena Pirilä-ohjelman hyväksymä **hajonta.csv**, vertaa csv-versio edellä
-
-
-## Tarkistus tulospalveluohjelman tiedoilla, lähde ratatiedosto (XML) 
-
 
 ## Hajonnat tarkistus
-### pohja-aineisto tehty em. jommasta kummasta lähteestä
-* tulos kansiossa on oltava tiedostot: tarkistus.joukkueet.csv,  tarkistus.rastit.csv,  tarkistus.sarjat.csv
-* varsinainen tarkistus
-```sh
-./tarkista.sh
-```
+Em. check.variants.sh  -m optiolla valitaan mikä lähdeaineistoversio käytössä.
 
-* lopputulos kansiossa tulos sarjoittain SARJA.tarkistus.txt
+Kun tarkistus on tehty, on ilmoitetussa tuloskansiossa (results) tiedostoja, joista voi katsoa kuinka tulkittu
+lähdedata.
+* check.teams.csv,  check.controls.csv,  check.class.csv
+* tulos sarjoittain SARJA.check.txt
 * jos ei ole virheita, niin vain yksi rivi, jossa kaytetyt rastivalit ja kuinka monesti
 * jos virheita, niin virheelliset joukkueet raportoitu ja kerrottu myös mikä erottaa 1. joukkueen hajonnasta
 
