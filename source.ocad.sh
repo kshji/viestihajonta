@@ -62,6 +62,9 @@ gawk -v debug=$debug -f $BINDIR/get.class.ocad.awk "$teamvariantfile" > "$resdir
 # teams
 # - make pirila format !!! - you can use this also in the Pirila-programms.ocad.awk-
 gawk -v debug=$debug -f $BINDIR/get.teams.ocad.awk "$teamvariantfile" > "$resdir/variants.csv" 
+cp -f "$resdir/variants.csv" "$resdir/hajonta.csv" 2>/dev/null
+cp -f "$resdir/variants.csv" "$resdir/hajonta.lst" 2>/dev/null
+
 # ja and then make generic ....
 gawk -v debug=$debug -f get.teams.csv.awk "$resdir/variants.csv" > "$resdir/check.teams.csv"
 
