@@ -76,7 +76,7 @@ html=0
 # file include courses, controls and variant information
 coursefile=""
 # file include information combination team, leg, variant
-teamvarianfile="" 
+teamvariantfile="" 
 # uniq temporary dir for this process
 tmpdir="tmp/$myid.$(date '+%Y-%m-%d_%H%M%S')"
 # already in generic csv format
@@ -89,7 +89,7 @@ do
 		-d) debug=$2; shift ;;
 		-c) coursefile=$2; shift ;;
 		--classfile) classfile="$2"; shift ;;
-		-t) teamvarianfile=$2; shift ;;
+		-t) teamvariantfile=$2; shift ;;
 		-z) zipfile=$2; shift ;;
 		-m) method=$2; shift ;;
 		-w) html=1; shift ;;
@@ -101,12 +101,12 @@ done
 
 [ "$coursefile" = "" -a "$html" = 0 ] && echo "need courses" >&2 && exit 20
 [ "$coursefile" = ""  ] && echo "<p>need coursesfile</p>"  && exit 21
-[ "$teamvarianfile" = "" -a "$html" = 0 ] && echo "need team+variant datafile" >&2 && exit 22
-[ "$teamvarianfile" = ""  ] && echo "<p>need team+variant datafile</p>"  && exit 23
+[ "$teamvariantfile" = "" -a "$html" = 0 ] && echo "need team+variant datafile" >&2 && exit 22
+[ "$teamvariantfile" = ""  ] && echo "<p>need team+variant datafile</p>"  && exit 23
 
 
 rmbom "$coursefile"
-rmbom "$teamvarianfile"
+rmbom "$teamvariantfile"
 mkdir -p "$tmpdir" 2>/dev/null
 
 resdir="$tmpdir/results"
@@ -116,21 +116,21 @@ rm -f "$resdir"/*.check*.csv "$resdir"/*.check*.txt "$resdir"/variants.csv "$tmp
 
 case "$method" in 
 	1) # Ocad course xml 3.0 and Ocad teams
-		((debug>0)) && echo "$BINDIR/source.ocad.sh -c $coursefile -t $teamvarianfile -i $myid -d $debug -p $tmpdir"
-		$BINDIR/source.ocad.sh -c "$coursefile" -t "$teamvarianfile" -i "$myid" -d "$debug" -p "$tmpdir"
+		((debug>0)) && echo "$BINDIR/source.ocad.sh -c $coursefile -t $teamvariantfile -i $myid -d $debug -p $tmpdir"
+		$BINDIR/source.ocad.sh -c "$coursefile" -t "$teamvariantfile" -i "$myid" -d "$debug" -p "$tmpdir"
 		;;
 	2) # Ocad course xml 2.0.3/3.0  and teams with forks csv
-		$BINDIR/source.csv.sh -c "$coursefile" -t "$teamvarianfile" -i "$myid" -d "$debug" -p "$tmpdir"
+		$BINDIR/source.csv.sh -c "$coursefile" -t "$teamvariantfile" -i "$myid" -d "$debug" -p "$tmpdir"
 		;;
 	3) # Course xml 2.0.3 from Pirila resultsystem and teams with forks (xml) from Pirila resultsystem
-		$BINDIR/source.pirila.sh -c "$coursefile" -t "$teamvarianfile" -i "$myid" -d "$debug" -p "$tmpdir"
+		$BINDIR/source.pirila.sh -c "$coursefile" -t "$teamvariantfile" -i "$myid" -d "$debug" -p "$tmpdir"
 		;;
 	4) # All files is already in needed generic csv format - only copy ...
 		[ "$classfile" = "" ] && echo "need classfile" >&2 && exit 41
 		[ ! -f "$classfile" ] && echo "classfile $classfile ???" >&2 && exit 42
-		rmbom "$classfilclassfile"
+		rmbom "$classfile"
 		cp "$coursefile" "$resdir/check.controls.csv"
-		cp "$teamvarianfile" "$resdir/check.controls.csv"
+		cp "$teamvariantfile" "$resdir/check.teams.csv"
 		cp "$classfile" "$resdir/check.class.csv"
 		;;
 	*) # not supported
