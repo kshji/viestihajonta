@@ -11,13 +11,13 @@
 #  (c) Jukka Inkeri 2022-
 #
 # Ocad
-# ./check.variants.sh -c examples/relay1.course.Courses.v3.xml  -t examples/relay1.course.Variations.txt -m 1 -d 0
+# ./check.variants.sh -c sourcedata/examples/relay1.course.Courses.v3.xml  -t sourcedata/examples/relay1.course.Variations.txt -m 1 -d 0
 # Pirila
-# ./check.variants.sh -c examples/radat.v3.kenraali.xml -t examples/pirilasta.kenraali.xml -m 3 -d 0
-# ./check.variants.sh -c examples/radat.v2.kenraali.xml -t examples/pirilasta.kenraali.xml -m 3 -d 0
+# ./check.variants.sh -c sourcedata/examples/radat.v3.kenraali.xml -t sourcedata/examples/pirilasta.kenraali.xml -m 3 -d 0
+# ./check.variants.sh -c sourcedata/examples/radat.v2.kenraali.xml -t sourcedata/examples/pirilasta.kenraali.xml -m 3 -d 0
 # Ocad + teams variants in csv
-# ./check.variants.sh -c examples/radat.v2.kenraali.xml -t examples/hajonta.kenraali.csv -m 2 -d 0
-# ./check.variants.sh -c examples/radat.v2.kenraali.virhe.xml -t examples/hajonta.kenraali.csv -m 2 -d 0
+# ./check.variants.sh -c sourcedata/examples/radat.v2.kenraali.xml -t sourcedata/examples/hajonta.kenraali.csv -m 2 -d 0
+# ./check.variants.sh -c sourcedata/examples/radat.v2.kenraali.virhe.xml -t sourcedata/examples/hajonta.kenraali.csv -m 2 -d 0
 # 
 
 PRG="$0"
