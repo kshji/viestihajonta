@@ -49,8 +49,8 @@ cd viestihajonta
 # tassa hakemistossa suoritukset oheisen ohjeen mukaisesti
 ```
 
-Tai lataa ko. paketti ZIP tiedostona ja pura se johonkin kansioon
-[ZIP-tiedosto](https://github.com/kshji/viestihajonta/archive/refs/heads/main.zip)
+Tai lataa ko. paketti ZIP tiedostona ja pura se johonkin kansioon, 
+[Lataa ZIP-tiedosto](https://github.com/kshji/viestihajonta/archive/refs/heads/main.zip)
 
 ## Suoritus Windows
 * suorita em. GitBash
@@ -60,8 +60,8 @@ cd /c/viestihajonta
 ```
 
 ## Esimerkki
-Kansiossa **esimerkki** on mallitiedostoja. Sieltä voi kopioida kansioon **lahdedata** tarvittavat tiedostot ja suorittaa ko. tarkistus. 
-Malliaineisto on Jukolan kenraalista, jossa kolme osuutta.
+Kansiossa **sourcedata/examples** on mallitiedostoja. Niille voi suorittaa tarkistukset.
+Malliaineisto on mm. Jukolan kenraalista, jossa kolme osuutta.
 
 Ko. kansiossa voit ajaa testiaineistot suoraan komennoilla testi1.sh ... testi6.sh
 ```sh
