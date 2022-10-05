@@ -1,7 +1,7 @@
-# get.2..awk
+# get.data.awk
 # use getXML.awk parser
 # example to print out xml elements and attributes values
-# gawk -f  get.2.example.awk example.xml
+# gawk -f  get.data.awk example.xml
 BEGIN {
      OFS="|"
      #while ( getXML(ARGV[1],1) ) {
