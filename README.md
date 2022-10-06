@@ -63,7 +63,9 @@ cd /c/viestihajonta
 Kansiossa **sourcedata/examples** on mallitiedostoja. Niille voi suorittaa tarkistukset.
 Malliaineisto on mm. Jukolan kenraalista, jossa kolme osuutta.
 
-Ko. kansiossa voit ajaa testiaineistot suoraan komennoilla testi1.sh ... testi6.sh
+Ko. kansiossa voit ajaa testiaineistot suoraan komennoilla testi1.sh ... testi7.sh
+
+Samalla esimerkki, että komennon voi suorittaa myös siinä kansiossa, missä on lähdeaineisto. Tekee tällöin ko. kansion alle tmp-kansion.
 ```sh
 ./testi1.sh
 ```
@@ -86,7 +88,7 @@ Oheisessa dokumentissä
 [https://github.com/kshji/viestihajonta/raw/main/Hajontatarkistus.Lahtotiedot.Pirilasta.pdf](Hajontatarkistus.Lahtotiedot.Pirilasta.pdf) on tarkemmin kuvaus
 kuinka Ocad:stä tehdään ko. lähdeaineistot eri versioissa.
 
-## Lähdemateriaali versio 1 - Ocad:stä ratatiedosto (XML 3.0) ja hajonnat joukkueittain txt-tiedostosta 
+## Lähdemateriaali versio 1 - ocad - Ocad:stä ratatiedosto (XML 3.0) ja hajonnat joukkueittain txt-tiedostosta 
 **radat.xml** ja **joukkuehajonnat.txt**
 
 Radat tehty Ocad:ssä viestihajontoina.
@@ -105,13 +107,14 @@ Tällä ajolla syntyy aputuloksena Pirilä-ohjelman tuntema **hajonta.lst** muot
 
 ### tarkistus
 check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(txt) -m 1 
+check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(txt) -m ocad
 ```sh
-./check.variants.sh -c sourcedata/examples/relay1.course.Courses.v3.xml -t sourcedata/examples/relay1.course.Variations.txt -m 2 
+./check.variants.sh -c sourcedata/examples/relay1.course.Courses.v3.xml -t sourcedata/examples/relay1.course.Variations.txt -m ocad
 # tai
 ./check.variants.sh -c sourcedata/examples/radat.ocad.v3.xml -t sourcedata/examples/joukkuehajonnat.txt -m 2 
 ```
 
-## Lähdemateriaali versio 2 - ratatiedosto (XML) ja hajonnat joukkueittain csv-tiedostosta (Pirilän lst)
+## Lähdemateriaali versio 2 - csv - ratatiedosto (XML) ja hajonnat joukkueittain csv-tiedostosta (Pirilän lst)
 **radat.xml** ja **hajonta.csv** tai **hajonta.lst**
 
 Tehdään tarkistus, kun on radat tehty ja tiedossa on mitä hajontoja millekin joukkueelle tarjoillaan.
@@ -136,10 +139,11 @@ Ko. kaksi tiedostoa oltava käytettävissä, nimentä vapaasti, esim:
 
 ### tarkistus
 check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) -m 2 
+check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) -m csv
 ```sh
-./check.variants.sh -c sourcedata/examples/radat.v2.kenraali.xml -t sourcedata/examples/hajonta.kenraali.csv -m 2 
+./check.variants.sh -c sourcedata/examples/radat.v2.kenraali.xml -t sourcedata/examples/hajonta.kenraali.csv -m csv
 ```
-## Lähdemateriaali versio 3 - Pirilä-ohjelmisto - ratatiedosto (XML) ja  kilpalijatiedot (XML)
+## Lähdemateriaali versio 3 - pirila - Pirilä-ohjelmisto - ratatiedosto (XML) ja  kilpalijatiedot (XML)
 **radat.xml** ja **pirilasta.xml**
 
 Lopullinen tarkistus tulee tehdä sillä tiedolla, joka on tulospalveluohjelmassa, tässä tapauksessa Pirilä-ohjelmasta
@@ -156,11 +160,12 @@ samana hajontana esim. 1AAA, 2AAA, 3AAA voivat olla sama hajonta tai ei.
 
 ### tarkistus
 check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) -m 3 
+check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) -m pirila
 ```sh
-./check.variants.sh -c sourcedata/examples/radat.v2.kenraali.xml -t sourcedata/examples/pirilasta.kenraali.xml -m 3 
+./check.variants.sh -c sourcedata/examples/radat.v2.kenraali.xml -t sourcedata/examples/pirilasta.kenraali.xml -m pirila
 ```
 
-## Lähdemateriaali versio 4 - aineisto on tuotettu muulla tavalla jo valmiiksi tämän järjestelmän csv-muotoon
+## Lähdemateriaali versio 4 - raw - aineisto on tuotettu muulla tavalla jo valmiiksi tämän järjestelmän csv-muotoon
 Kansiossa sourcedata/genericformat on esimerkkitiedostoja, jollaisia voi tuottaa valmiiksi.
   * sarjat : check.class.csv
   * hajontakoodit rasteineen :  check.controls.csv
@@ -168,8 +173,9 @@ Kansiossa sourcedata/genericformat on esimerkkitiedostoja, jollaisia voi tuottaa
 
 ### tarkistus
 check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) --classfile sarjartiedosto(csv) -m 4 
+check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) --classfile sarjartiedosto(csv) -m raw
 ```sh
-./check.variants.sh -c sourcedata/genericformat/check.controls.csv -t sourcedata/genericformat/check.teams.csv --classfile sourcedata/genericformat/check.class.csv  -m 4 
+./check.variants.sh -c sourcedata/genericformat/check.controls.csv -t sourcedata/genericformat/check.teams.csv --classfile sourcedata/genericformat/check.class.csv  -m raw
 ```
 
 ## Lopputulos
@@ -182,6 +188,8 @@ Esim. Jos sarjassa H21 on virhe, niin ilmoitetussa kansiossa on **H21.check.txt*
 * kansiossa on ns. normalisoidussa muodossa kilpailun tiedot **check.*.csv**
 * ko. tiedot voi täten tuottaa muutenkin, jotta tarkistus voidaan suorittaa, katso versio 4 ohjeet
 
+```tmp/JOKUhakemisto/results/tmp```
+Kansiossa on kunkin joukkueen käyttämät rastivälit kukin omassa tiedostossa.
 
 ## Pirilä-ohjelmasta tarvittavat tiedostot
 Tarkistus tulospalveluohjelman tiedoilla (XML) ja ratatiedosto (XML).
@@ -191,7 +199,6 @@ Oheisessa ohjedokumentissä
 kuinka Ocad:stä tehdään ko. lähdeaineisto.
 Ocad:n ongelma on ettei hajontoja voi vähentää Farstasta esim. tupla-Vännekseen. Tästä syystä 
 tehdään Ocadiin hajonnat omina ratoina, joka tietysti nostaa riskikerrointa saada aikaiseksi virheitä.
-
 
 ## Hajonnat tarkistus
 Em. check.variants.sh  -m optiolla valitaan mikä lähdeaineistoversio käytössä.
@@ -214,17 +221,23 @@ VER-rivi on tulos, joka piti saada.
 ```text
 VER :0-31|1|0-32|1|0-33|1|129-52|1|129-61|1|129-888|1|31-129|1|32-129|1|33-129|1|52-741|1|61-741|1|741-M|2|888-M|1
  313:0-31|1|0-32|2|129-52|1|129-61|1|129-888|1|31-129|1|32-129|2|52-741|1|61-741|1|741-M|2|888-M|1
-ERO: 0-33 = Joukkue:310 lkm:1 Joukkue:313 lkm:0
-ERO: 33-129 = Joukkue:310 lkm:1 Joukkue:313 lkm:0
-ERO: 32-129 = Joukkue:310 lkm:1 Joukkue:313 lkm:2
-ERO: 0-32 = Joukkue:310 lkm:1 Joukkue:313 lkm:2
+DIFF-ERO: 0-33 = teamid:310 counter:1 teamid:313 counter:0
+DIFF-ERO: 33-129 = teamid:310 counter:1 teamid:313 counter:0
+DIFF-ERO: 32-129 = teamid:310 counter:1 teamid:313 counter:2
+DIFF-ERO: 0-32 = teamid:310 counter:1 teamid:313 counter:2
  316:0-31|1|0-32|2|129-52|1|129-61|1|129-888|1|31-129|1|32-129|2|52-741|1|61-741|1|741-M|2|888-M|1
-ERO: 0-33 = Joukkue:310 lkm:1 Joukkue:316 lkm:0
-ERO: 33-129 = Joukkue:310 lkm:1 Joukkue:316 lkm:0
-ERO: 32-129 = Joukkue:310 lkm:1 Joukkue:316 lkm:2
-ERO: 0-32 = Joukkue:310 lkm:1 Joukkue:316 lkm:2
+DIFF-ERO: 0-33 = teamid:310 counter:1 teamid:316 counter:0
+DIFF-ERO: 33-129 = teamid:310 counter:1 teamid:316 counter:0
+DIFF-ERO: 32-129 = teamid:310 counter:1 teamid:316 counter:2
+DIFF-ERO: 0-32 = teamid:310 counter:1 teamid:316 counter:2
 ```
 
+## tmp kansion siivous
+**tmp** kansiosta voi siivota kaikki pois, jollei halua säilyttää siellä suoritusten tuloksia.
+```sh
+cd tmp
+rm -rf [0-9]*
+```
 ## Esimerkkitiedostoja Ocad
 Kansiossa maps on esimerkkejä Ocad:ssä.
 * relay1 on tässä käytetyn testi6.sh esimerkin testidata
