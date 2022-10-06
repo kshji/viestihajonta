@@ -70,7 +70,7 @@ gawk -v debug=$debug -f get.teams.csv.awk "$resdir/variants.csv" > "$resdir/chec
 
 # variants - forking
 # Accept iof 2.0.3 and iof 3.0
-gawk  -f get.data.awk "$coursefile" | gawk -v debug=$debug -f get.variants.ocad.awk > "$resdir/check.variants.csv"
+gawk  -f get.data.awk -i "$BINDIR/getXML.awk" "$coursefile" | gawk -v debug=$debug -f get.variants.ocad.awk > "$resdir/check.variants.csv"
 
 # legs - rastivalit
 # diff ver iof 2.0.3 and 3.0
@@ -79,12 +79,12 @@ verstr=$(grep 'iofVersion="3.0"' "$coursefile" 2>/dev/null)
 [ "$verstr" != "" ] && verid=3
 case "$verid" in
 	2)
-	  ((debug>0)) && echo "2.0 - gawk -f $BINDIR/get.data.awk $coursefile | gawk -v debug=$debug -f $BINDIR/get.controls.iof2.awk > $resdir/check.controls.csv"
-	  gawk -f "$BINDIR/get.data.awk" "$coursefile" | gawk -v debug=$debug -f "$BINDIR/get.controls.iof2.awk" > "$resdir/check.controls.csv"
+	  ((debug>0)) && echo "2.0 - gawk -f $BINDIR/get.data.awk  -i "$BINDIR/getXML.awk" $coursefile | gawk -v debug=$debug -f $BINDIR/get.controls.iof2.awk > $resdir/check.controls.csv"
+	  gawk -f "$BINDIR/get.data.awk"  -i "$BINDIR/getXML.awk" "$coursefile" | gawk -v debug=$debug -f "$BINDIR/get.controls.iof2.awk" > "$resdir/check.controls.csv"
 	  ;;
 	3)
-	  ((debug>0)) && echo "3.0 - gawk -f $BINDIR/get.data.awk $coursefile | gawk -v debug=$debug -f $BINDIR/get.controls.iof3.awk > $resdir/check.controls.csv"
-	  gawk -f "$BINDIR/get.data.awk" "$coursefile" | gawk -v debug=$debug -f "$BINDIR/get.controls.iof3.awk" > "$resdir/check.controls.csv"
+	  ((debug>0)) && echo "3.0 - gawk -f $BINDIR/get.data.awk  -i "$BINDIR/getXML.awk" $coursefile | gawk -v debug=$debug -f $BINDIR/get.controls.iof3.awk > $resdir/check.controls.csv"
+	  gawk -f "$BINDIR/get.data.awk"  -i "$BINDIR/getXML.awk" "$coursefile" | gawk -v debug=$debug -f "$BINDIR/get.controls.iof3.awk" > "$resdir/check.controls.csv"
 	  ;;
 esac
 

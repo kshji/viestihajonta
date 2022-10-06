@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 # check.variants.sh
 # (c) Jukka Inkeri viestihajonta@awot.fi relayvariant@awot.fi
-# Ver: 2022-10-05
+# Ver: 2022-10-06
 #
 # Main program to check orienteering forkings in the relays and 
 # also in the individual courses with forking
@@ -39,7 +39,7 @@ chmod 1777 "$tmpdir"/tmp 2>/dev/null
 clean()
 {
 	#[ -d "$tmpdir" -a $debug -gt 0 ] && rm -rf  "$tmpdir" 2>/dev/null
-	echo "$tmpdir"
+	#echo "$tmpdir"
 	:
 }
 
@@ -142,6 +142,4 @@ esac
 # Check forking variants using this env generic csv files format
 
 $BINDIR/check.do.sh  -c "$resdir/check.class.csv" -t "$resdir/check.teams.csv" -v "$resdir/check.controls.csv" -d "$debug" -p "$resdir"
-
-
-
+echo "DIR $resdir"

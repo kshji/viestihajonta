@@ -36,4 +36,4 @@ BEGIN {
 
 
 # if your awk not support include, then add getXML.awk file here
-@include "getXML.awk"
+##@include "getXML.awk"

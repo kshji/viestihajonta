@@ -57,16 +57,16 @@ done
 [ ! -f "$teamvariantfile" ] && echo "can't open file $teamvariantfile" >&2 && exit 22
 
 resdir="$tmpdir/results"
-gawk -f "$BINDIR/get.data.awk" "$teamvariantfile" | gawk -v debug=$debug -f "$BINDIR/get.class.pirila.awk"  > "$resdir/check.class.csv"
+gawk -f "$BINDIR/get.data.awk"  -i "$BINDIR/getXML.awk" "$teamvariantfile" | gawk -v debug=$debug -f "$BINDIR/get.class.pirila.awk"  > "$resdir/check.class.csv"
 
 
 # teams
 # D16|1690|1|1J4
-gawk -f "$BINDIR/get.data.awk" "$teamvariantfile" | gawk -v debug=$debug -f "$BINDIR/get.teams.pirila.awk" >  "$resdir/check.teams.csv"
+gawk -f "$BINDIR/get.data.awk"  -i "$BINDIR/getXML.awk" "$teamvariantfile" | gawk -v debug=$debug -f "$BINDIR/get.teams.pirila.awk" >  "$resdir/check.teams.csv"
 
 # variants
 # iof xml 2.0.3 and iof 3.0
-#gawk -f  "$BINDIR/get.data.awk" "$coursefile" | gawk -f get.variants.ocad.awk > "$resdir/check.variants.csv"
+#gawk -f  "$BINDIR/get.data.awk"  -i "$BINDIR/getXML.awk" "$coursefile" | gawk -f get.variants.ocad.awk > "$resdir/check.variants.csv"
 
 # code2code - legs - rastivalit
 # diff ver iof 2.0.3 and 3.0
@@ -75,10 +75,10 @@ verstr=$(grep 'iofVersion="3.0"' "$coursefile" 2>/dev/null)
 [ "$verstr" != "" ] && ver=3
 case "$ver" in
         2)
-          gawk -f "$BINDIR/get.data.awk" "$coursefile" | gawk -v debug=$debug -f "$BINDIR/get.controls.iof2.awk" > "$resdir/check.controls.csv"
+          gawk -f "$BINDIR/get.data.awk"  -i "$BINDIR/getXML.awk" "$coursefile" | gawk -v debug=$debug -f "$BINDIR/get.controls.iof2.awk" > "$resdir/check.controls.csv"
           ;;
         3)
-          gawk -f "$BINDIR/get.data.awk" "$coursefile" | gawk -v debug=$debug -f "$BINDIR/get.controls.iof3.awk" > "$resdir/check.controls.csv"
+          gawk -f "$BINDIR/get.data.awk"  -i "$BINDIR/getXML.awk" "$coursefile" | gawk -v debug=$debug -f "$BINDIR/get.controls.iof3.awk" > "$resdir/check.controls.csv"
           ;;
 esac
 

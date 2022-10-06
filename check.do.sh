@@ -120,7 +120,6 @@ do
 	((lines>1)) && echo " - Variant error class $classid"
 done < "$classes"
 
-echo ""
 echo "result dir $resdir - lopputulos kansiossa $resdir" >&2
 
 ((debug>0)) && ls -l "$resdir" >&2
