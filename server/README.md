@@ -1,6 +1,6 @@
 # Viestihajonta tarkastaja -online palvelin - Variant checking online server
 This is done for checking orienteering forking system.
-This server look legs (control to control pairs) in the relay and individual competition using forking.
+This server check legs (control to control pairs) in the relay and individual competition using forking.
 
 Check: Run the same overall course.
 
@@ -27,6 +27,8 @@ This server is microserver which only support orienteering cource variant checki
 ./server.sh -s
 ```
 
+## Sourcecode
+I'll publish also server sourcecode after I have tested - enough.
 
 
 ## LICENSE file-upload
