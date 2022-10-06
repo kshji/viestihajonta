@@ -1,6 +1,6 @@
 # How to process file uploads in Go
 
-This code has nodified using
+This code has modified using
  [Freshman tutorial](https://freshman.tech/file-upload-golang/). 
 
 Clone this repo to your
