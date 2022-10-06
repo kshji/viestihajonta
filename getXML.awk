@@ -1,4 +1,6 @@
 ##
+# getXML.awk
+#
 # source  https://groups.google.com/forum/#!search/getxml.awk JanWeber
 #
 # getXML( file, skipData ): # read next xml-data into XTYPE,XITEM,XATTR
