@@ -57,20 +57,20 @@ done
 
 resdir="$tmpdir/results"
 
-gawk -v debug=$debug -f $BINDIR/get.class.ocad.awk "$teamvariantfile" > "$resdir/check.class.csv"
+gawk -v debug=$debug -f "$BINDIR/get.class.ocad.awk" "$teamvariantfile" > "$resdir/check.class.csv"
 
 # teams
 # - make pirila format !!! - you can use this also in the Pirila-programms.ocad.awk-
-gawk -v debug=$debug -f $BINDIR/get.teams.ocad.awk "$teamvariantfile" > "$resdir/variants.csv" 
+gawk -v debug=$debug -f "$BINDIR/get.teams.ocad.awk" "$teamvariantfile" > "$resdir/variants.csv" 
 cp -f "$resdir/variants.csv" "$resdir/hajonta.csv" 2>/dev/null
 cp -f "$resdir/variants.csv" "$resdir/hajonta.lst" 2>/dev/null
 
 # ja and then make generic ....
-gawk -v debug=$debug -f get.teams.csv.awk "$resdir/variants.csv" > "$resdir/check.teams.csv"
+gawk -v debug=$debug -f "$BINDIR/get.teams.csv.awk" "$resdir/variants.csv" > "$resdir/check.teams.csv"
 
 # variants - forking
 # Accept iof 2.0.3 and iof 3.0
-gawk  -f get.data.awk -i "$BINDIR/getXML.awk" "$coursefile" | gawk -v debug=$debug -f get.variants.ocad.awk > "$resdir/check.variants.csv"
+gawk  -f "$BINDIR/get.data.awk" -i "$BINDIR/getXML.awk" "$coursefile" | gawk -v debug=$debug -f "$BINDIR/get.variants.ocad.awk" > "$resdir/check.variants.csv"
 
 # legs - rastivalit
 # diff ver iof 2.0.3 and 3.0

@@ -104,7 +104,6 @@ done
 [ "$teamvariantfile" = "" -a "$html" = 0 ] && echo "need team+variant datafile" >&2 && exit 22
 [ "$teamvariantfile" = ""  ] && echo "<p>need team+variant datafile</p>"  && exit 23
 
-
 rmbom "$coursefile"
 rmbom "$teamvariantfile"
 mkdir -p "$tmpdir" 2>/dev/null
@@ -115,17 +114,17 @@ mkdir -p "$resdir" 2>/dev/null
 rm -f "$resdir"/*.check*.csv "$resdir"/*.check*.txt "$resdir"/variants.csv "$tmpdir"/tmp/*.tmp "$resdir"/tmp/* 2>/dev/null
 
 case "$method" in 
-	1) # Ocad course xml 3.0 and Ocad teams
+	1|ocad) # Ocad course xml 3.0 and Ocad teams
 		((debug>0)) && echo "$BINDIR/source.ocad.sh -c $coursefile -t $teamvariantfile -i $myid -d $debug -p $tmpdir"
 		$BINDIR/source.ocad.sh -c "$coursefile" -t "$teamvariantfile" -i "$myid" -d "$debug" -p "$tmpdir"
 		;;
-	2) # Ocad course xml 2.0.3/3.0  and teams with forks csv
+	2|csv) # Ocad course xml 2.0.3/3.0  and teams with forks csv
 		$BINDIR/source.csv.sh -c "$coursefile" -t "$teamvariantfile" -i "$myid" -d "$debug" -p "$tmpdir"
 		;;
-	3) # Course xml 2.0.3 from Pirila resultsystem and teams with forks (xml) from Pirila resultsystem
+	3|pirila) # Course xml 2.0.3 from Pirila resultsystem and teams with forks (xml) from Pirila resultsystem
 		$BINDIR/source.pirila.sh -c "$coursefile" -t "$teamvariantfile" -i "$myid" -d "$debug" -p "$tmpdir"
 		;;
-	4) # All files is already in needed generic csv format - only copy ...
+	4|raw) # All files is already in needed generic csv format - only copy ...
 		[ "$classfile" = "" ] && echo "need classfile" >&2 && exit 41
 		[ ! -f "$classfile" ] && echo "classfile $classfile ???" >&2 && exit 42
 		rmbom "$classfile"
