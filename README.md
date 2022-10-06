@@ -88,6 +88,7 @@ Oheisessa dokumentissä
 [https://github.com/kshji/viestihajonta/raw/main/Hajontatarkistus.Lahtotiedot.Pirilasta.pdf](Hajontatarkistus.Lahtotiedot.Pirilasta.pdf) on tarkemmin kuvaus
 kuinka Ocad:stä tehdään ko. lähdeaineistot eri versioissa.
 
+# Tarkistus - suoritusohje
 ## Lähdemateriaali versio 1 - ocad - Ocad:stä ratatiedosto (XML 3.0) ja hajonnat joukkueittain txt-tiedostosta 
 **radat.xml** ja **joukkuehajonnat.txt**
 
@@ -105,7 +106,7 @@ joukkueiden hajontoja vertailen/muokaten, että ovat järkeviä ja että seuran 
 
 Tällä ajolla syntyy aputuloksena Pirilä-ohjelman tuntema **hajonta.lst** muotoinen tiedosto - voi lukea lähdedatana Pirilään.
 
-### tarkistus
+### tarkistus ocad
 check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(txt) -m 1 
 check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(txt) -m ocad
 ```sh
@@ -137,7 +138,7 @@ Ko. kaksi tiedostoa oltava käytettävissä, nimentä vapaasti, esim:
  * radat.xml
  * hajonta.csv
 
-### tarkistus
+### tarkistus csv
 check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) -m 2 
 check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) -m csv
 ```sh
@@ -158,7 +159,7 @@ käytetään farstaa ja kelpaa oletusarvonta joukkeiden hajonnoiksi, niin tätä
 Tässä mallissa kaikki ylläpito pitää tehdä Ocad:ssä, ainakin hajontoihin, koska sama hajonta voi olla useana 
 samana hajontana esim. 1AAA, 2AAA, 3AAA voivat olla sama hajonta tai ei. 
 
-### tarkistus
+### tarkistus pirila
 check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) -m 3 
 check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) -m pirila
 ```sh
@@ -171,7 +172,7 @@ Kansiossa sourcedata/genericformat on esimerkkitiedostoja, jollaisia voi tuottaa
   * hajontakoodit rasteineen :  check.controls.csv
   * joukkueet hajontakoodeineen: check.teams.csv
 
-### tarkistus
+### tarkistus raw
 check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) --classfile sarjartiedosto(csv) -m 4 
 check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) --classfile sarjartiedosto(csv) -m raw
 ```sh
@@ -232,13 +233,13 @@ DIFF-ERO: 32-129 = teamid:310 counter:1 teamid:316 counter:2
 DIFF-ERO: 0-32 = teamid:310 counter:1 teamid:316 counter:2
 ```
 
-## tmp kansion siivous
+# tmp kansion siivous
 **tmp** kansiosta voi siivota kaikki pois, jollei halua säilyttää siellä suoritusten tuloksia.
 ```sh
 cd tmp
 rm -rf [0-9]*
 ```
-## Esimerkkitiedostoja Ocad
+# Esimerkkitiedostoja Ocad
 Kansiossa maps on esimerkkejä Ocad:ssä.
 * relay1 on tässä käytetyn testi6.sh esimerkin testidata
 * Ocad:ssä monimutkaisemmat hajonnat vaatii hieman miettimistä, mutta syntyy kuitenkin ihan asiallisesti
@@ -247,5 +248,5 @@ Kansiossa maps on esimerkkejä Ocad:ssä.
   * ettei arvottua hajontakasaa joukkueille voi säätää esim. saman seuran useamman joukkueen kesken jne.
   
 
-## Historia
+# Historia
 * 2022 SM-Viestin hajontavirheet toimi kimmokkeena, versio 1 on luotu 24.9.2022
