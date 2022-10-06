@@ -1,17 +1,20 @@
 #!/usr/bin/bash
-# testi3.sh
+# testi2.sh
 # Testataan ennen kisaa tuottaen data Pirila-ohjelmasta
-# radat.xml ratatiedot
+# radat.xml ratatiedot IOF 3.0
 # pirilasta.xml kilpailun kaikki tiedot XML muodossa Pirila-ohjelmasta
-# Ratatiedot IOF 3.0 versio
 
-cp radat.v3.kenraali.xml ../lahdedata/radat.xml
-cp pirilasta.kenraali.xml ../lahdedata/pirilasta.xml
-cd ..
-./pohjatiedot.pirila.sh
-./tarkista.sh
+mkdir -p tmp
+set +m;shopt -s lastpipe
+../../check.variants.sh -c radat.v3.kenraali.xml -t pirilasta.kenraali.xml -m 3 | \
+while read key line
+do
+        echo "* $key $line" >&2
+        dir="$line"
+done #</dev/stdin
+echo "$dir"
+ls -l "$dir"
+echo "$dir/KEN.check.txt"
+cat "$dir/KEN.check.txt"
 
-ls -l tulos
 
-echo "KEN.tarkitus.txt"
-cat tulos/KEN.tarkistus.txt
