@@ -38,8 +38,8 @@ chmod 1777 "$tmpdir"/tmp 2>/dev/null
 #####################################################################
 clean()
 {
+	# remove tmp files or not - current setup is - no
 	#[ -d "$tmpdir" -a $debug -gt 0 ] && rm -rf  "$tmpdir" 2>/dev/null
-	#echo "$tmpdir"
 	:
 }
 
@@ -47,16 +47,21 @@ clean()
 usage()
 {
         echo "usage:$PRG -c coursesfile -t teamsvariantsfile -m method [ -i sessioid -p tempdir -d 0/1 ] # d=debug " >&2
+	echo "  methdod
+   ocad   1  - source files - course IOF XML 3.0 and teamvariants.txt from Ocad
+   csv    2  - coursefile from Ocad and team with variants from csv-file - Pirila-format
+   pirila 3  - coursefile XML from Pirila-software and teams with variants XML from Pirila-software
+   raw    4  - source files are already in csv format which is used in this software
+ 	" >&2 
 }
 
 ########################################################################
-# - remove TF-8 magic and DOS cr
+# - remove UTF-8 magic and DOS cr
 rmbom()
 {
-        [ "$1" = "" ] && echo "usage:$0 infile" >&2 && exit 1
+        [ "$1" = "" ] && echo "usage:rmbom infile" >&2 && exit 1
         inf="$1"
-        mkdir -p tmp
-        tf=tmp/bom.$$.tmp
+        tf="$tmpdir"/bom.$$.tmp
         sed -e '1s/^\xef\xbb\xbf//' "$inf" | tr -d '\015' > "$tf"
         cat "$tf" > "$inf"
         rm -f "$tf" 2>/dev/null
@@ -90,7 +95,6 @@ do
 		-c) coursefile=$2; shift ;;
 		--classfile) classfile="$2"; shift ;;
 		-t) teamvariantfile=$2; shift ;;
-		-z) zipfile=$2; shift ;;
 		-m) method=$2; shift ;;
 		-w) html=1; shift ;;
 		-*) usage ; exit 1 ;;
@@ -104,9 +108,9 @@ done
 [ "$teamvariantfile" = "" -a "$html" = 0 ] && echo "need team+variant datafile" >&2 && exit 22
 [ "$teamvariantfile" = ""  ] && echo "<p>need team+variant datafile</p>"  && exit 23
 
+mkdir -p "$tmpdir" 2>/dev/null
 rmbom "$coursefile"
 rmbom "$teamvariantfile"
-mkdir -p "$tmpdir" 2>/dev/null
 
 resdir="$tmpdir/results"
 mkdir -p "$tmpdir/tmp" 2>/dev/null

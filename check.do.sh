@@ -62,9 +62,7 @@ classes=""
 controlfile=""
 teamsfile=""
 debug=0
-
 resdir="tmp/results"
-mkdir -p "$resdir"
 
 while [ $# -gt 0 ]
 do
@@ -80,6 +78,8 @@ do
         esac
         shift
 done
+
+mkdir -p "$resdir"
 
 classid="$1"
 
