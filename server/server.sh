@@ -50,7 +50,7 @@ chmod 1777 $uploaddir tmp loki 2>/dev/null
 
 case "$background" in
 	1)
-		nohup file-upload/variantserver -u "$uploaddir"  -p $port -d "$uploadurl" -c "$command" -x "$maxsize" > "$PWD"/loki/server.log 2>&1  &
+		nohup file-upload/variantserver -d "$uploaddir"  -p $port -u "$uploadurl" -c "$command" -x "$maxsize" > "$PWD"/loki/server.log 2>&1  &
 		PROSID=$!
 		echo "Server started PID:$PROSID" >&2
 		echo $PROSID > .pid.txt
