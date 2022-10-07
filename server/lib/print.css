@@ -1,0 +1,30 @@
+
+
+body {  /*font-family: arial,"Trebuchet MS", geneva, helvetica, tahoma, verdana, sans-serif;*/
+	font-family: "Josefin Sans",  "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-family: 'Source Sans Pro',sans-serif;
+        font-size: 0.9em;
+        border-width: 0px;
+        margin: 0px;
+        padding: 0px;
+        border-left:1px solid #aaa;
+      }
+
+
+
+.ylapalkki,.ylareuna  {display:none !important}
+
+/* page break properties */
+td, th, blockquote, pre, address {page-break-inside:avoid}
+
+table { page-break-inside:auto }
+tr    { page-break-inside:avoid; page-break-after:auto }
+thead { display:table-header-group }
+td, tr { font-size: 0.9em;  }
+td { border-top: 0.5pt solid black; border-left: 0.5pt solid black; }
+tfoot { display:table-footer-group }
+
+.otsikko { font-size: 1.1em; }
+div.otsikko tr, div.otsikko td { font-size: 1.3em; }
+
+
