@@ -4,6 +4,7 @@ package main
 import (
 	"fmt"
 	"io"
+	_"io/ioutil"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -19,6 +20,7 @@ import (
 )
 
 const MAX_UPLOAD_SIZE = 10*1024 * 1024 // 10 * 1MB
+const keyServerAddr = "serverAddr"
 
 type MyConfig struct {
         //xfloat float64
@@ -33,7 +35,6 @@ var myParam = new(MyConfig)
 var nonAlphanumericRegex = regexp.MustCompile(`[^a-zA-Z0-9.-_]+`)
 var removeEOL = regexp.MustCompile(`;.*`)
 
-//removeEOL.ReplaceAllString(str, "")
 
 ///////////////////////////////////////////////////////////////////////////
 func clearString(str string) string {
@@ -151,7 +152,20 @@ func (pr *Progress) Print() {
 
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("Content-Type", "text/html")
+	fmt.Printf("url:%s\n", r.URL.Path)
 	http.ServeFile(w, r, "index.html")
+}
+
+func AboutHandler(w http.ResponseWriter, r *http.Request) {
+	// https://www.digitalocean.com/community/tutorials/how-to-make-an-http-server-in-go
+	// This only for testing routing ...
+	//ctx := r.Context()
+	fmt.Printf("About url:%s\n", r.URL.Path)
+	//hasFirst := r.URL.Query().Has("first")
+	//first := r.URL.Query().Get("first")
+	// body, err := ioutil.ReadAll(r.Body)
+	w.Header().Add("Content-Type", "text/html")
+	http.ServeFile(w, r, "ok.html")
 }
 
 func uploadHandler(w http.ResponseWriter, r *http.Request) {
@@ -187,7 +201,8 @@ func uploadHandler(w http.ResponseWriter, r *http.Request) {
 	if debugstr == "1"   { debug = "1" }
 	for _, fileHeader := range files {
 		// remove special chars from filename
-		filename := clearString(fileHeader.Filename)
+		filename := strings.ToLower(fileHeader.Filename)
+		filename = clearString(filename)
 		fmt.Printf("File : %s - %s\n", fileHeader.Filename,filename)
 		fmt.Printf("Sala : %s\n", sala)
 		if fileHeader.Size > MAX_UPLOAD_SIZE {
@@ -226,9 +241,9 @@ func uploadHandler(w http.ResponseWriter, r *http.Request) {
 			case "application/zip": ok=1
 			default: ok=0
 			}
-		//if filetype != "image/jpeg" && filetype != "image/png"  && filetype != "text/plain" && filetype != "application/octet-stream" {
+
 		if ok!= 1  {
-			http.Error(w, "The provided file format is not allowed. Please upload a JPEG, PNG, ZIP or text", http.StatusBadRequest)
+			http.Error(w, "The provided file format is not allowed. Please upload a txt, xml, csv, lst", http.StatusBadRequest)
 			return
 		}
 
@@ -244,7 +259,7 @@ func uploadHandler(w http.ResponseWriter, r *http.Request) {
 		fmt.Printf("Ext : %s %d\n", fileext,ok)
 
 		if (ok != 1 ) {
-			http.Error(w, "The provided file format is not allowed. Please upload a JPEG, PNG, ZIP or text", http.StatusBadRequest)
+			http.Error(w, "The provided file format is not allowed. Please upload a txt, xml, csv, lst", http.StatusBadRequest)
 			return
 		}
 
@@ -308,22 +323,26 @@ func main() {
 	//port := flag.String("p", "14500", "port to listen on")
 	flag.StringVar(&myParam.port,"p", "14500", "port to listen on")
 	flag.StringVar(&myParam.uploaddir,"d", "uploads", "upload dir")
-	flag.StringVar(&myParam.urlpath,"u", "/variantcheck/upload", "upload url")
+	//flag.StringVar(&myParam.urlpath,"u", "/variantcheck/upload", "upload url")
+	flag.StringVar(&myParam.urlpath,"u", "/variantcheck", "root urlpath")
 	flag.StringVar(&myParam.command,"c", "ping -c 2 8.8.8.8", "execute command after upload")
 	flag.IntVar(&myParam.maxsize,"x", MAX_UPLOAD_SIZE, "max filesize")
 	flag.Parse()
 	address := "127.0.0.1:" + myParam.port
 
 	fmt.Printf("- listening on %s \n",myParam.port)
-	fmt.Printf("- upload url %s \n",myParam.urlpath)
+	fmt.Printf("- root urlpath %s \n",myParam.urlpath)
 	fmt.Printf("- upload dir %s \n",myParam.uploaddir)
 	fmt.Printf("- command %s \n",myParam.command)
 	fmt.Printf("- maxsize uploadfile %d \n",myParam.maxsize)
 
 	mux := http.NewServeMux()
-	mux.HandleFunc("/", IndexHandler)
-	//mux.HandleFunc("/palvelimelle/upload", uploadHandler)
-	mux.HandleFunc(myParam.urlpath, uploadHandler)
+	mux.HandleFunc("/", IndexHandler)   // default if next not match
+	mux.HandleFunc(myParam.urlpath + "/about/", AboutHandler)
+	addOn :=  http.StripPrefix(myParam.urlpath +"/addon/",http.FileServer(http.Dir("./lib")))
+	//http.Handle("/dl/", http.StripPrefix("/dl", http.FileServer(http.Dir("/home/bob/Downloads")))
+	mux.Handle(myParam.urlpath +"/addon/", addOn)
+	mux.HandleFunc(myParam.urlpath + "/upload", uploadHandler)
 
 	//if err := http.ListenAndServe(":14500", mux); err != nil {
 	if err := http.ListenAndServe(address, mux); err != nil {
