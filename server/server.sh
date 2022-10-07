@@ -33,7 +33,7 @@ done
 . "$conf"
 
 [ "$uploaddir" = "" ] && echo "setup need uploaddir value" >&2 && exit 2
-[ "$uploadpath" = "" ] && uploadpath="/palvelimelle/upload"
+[ "$rooturlpath" = "" ] && uploadpath="/variantcheck"
 [ "$command" = "" ] && command="$PWD/process.sh"
 [ "$maxsize" = "" ] && maxsize=$((10 * 1024 * 1024)) # 10 MB
 
@@ -50,13 +50,13 @@ chmod 1777 $uploaddir tmp loki 2>/dev/null
 
 case "$background" in
 	1)
-		nohup file-upload/variantserver -d "$uploaddir"  -p $port -u "$uploadurl" -c "$command" -x "$maxsize" > "$PWD"/loki/server.log 2>&1  &
+		nohup file-upload/variantserver -d "$uploaddir"  -p $port -u "$rooturlpath" -c "$command" -x "$maxsize" > "$PWD"/loki/server.log 2>&1  &
 		PROSID=$!
 		echo "Server started PID:$PROSID" >&2
 		echo $PROSID > .pid.txt
 		;;
 	0)
-		file-upload/variantserver -d "$uploaddir"  -p $port -u "$uploadurl"  -c "$command" -x "$maxsize"
+		file-upload/variantserver -d "$uploaddir"  -p $port -u "$rooturlpath"  -c "$command" -x "$maxsize"
 		;;
 esac
 

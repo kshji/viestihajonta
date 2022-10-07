@@ -29,12 +29,13 @@ done
 for inf in $*
 do
 	case "$inf" in
-		*radat*.xml|*courses*.xml|*Courses*.xml) courcefile="$inf" ;;
-		*varian*.txt|*Variations*.txt|*joukkuehajonna*.txt|*teamvarian*.txt)  teamvariantfile="$inf" ; method=ocad ;;
+		*Radat*.xml|*radat*.xml|*courses*.xml|*Courses*.xml) courcefile="$inf" ;;
+		*varian*.txt|*Variations*.txt|*variations*.txt|*joukkuehajonna*.txt|*teamvarian*.txt)  teamvariantfile="$inf" ; method=ocad ;;
 		*hajonta*.csv|*hajonta*.lst|*variant*.lst|*varian*.csv)  teamvariantfile="$inf" ; method=csv;;
 		*pirila*.xml)  teamvariantfile="$inf" ; method=pirila ;;
 	esac
 done
+
 ((debug>0)) && echo "sourcedir  :$sourcedir"
 ((debug>0)) && echo "course     :$courcefile"
 ((debug>0)) && echo "teamvariant:$teamvariantfile"
@@ -54,12 +55,22 @@ do
 done #</dev/stdin
 #echo "$dir"
 
+oifs="$IFS"
+IFS="/" dirpath=($dir)
+dirid=${dirpath[1]}
+IFS="$oifs"
+
+echo "ID    :$dirid"
+echo "Method:$method"
+echo ""
+
 tmpf="$sourcedir/$$.tmp"
 for inf in "$dir"/check*csv
 do
 	[ "$inf" = "$dir/check*csv" ] && continue
 	onlyfilename="${inf##*/}"
-        echo " - $onlyfilename"
+        #echo " $dir - $onlyfilename - $inf"
+        echo "- $onlyfilename"
 done
 
 
@@ -67,6 +78,7 @@ echo "" > "$tmpf"
 
 if [ "$method" = "ocad" ] ; then # - print out hajonta.lst (Pirila variant format)
 	varf="$dir/hajonta.lst"
+	echo ""
 	echo "hajonta.lst:"
 	echo "$linestr"
 	[ -f "$varf" ] && cat "$varf"
@@ -77,7 +89,9 @@ for inf in "$dir"/*.check.txt
 do
 	[ "$inf" = "$dir/*.check.txt" ] && continue
 	onlyfilename="${inf##*/}"
-	echo "*${onlyfilename}*" >> "$tmpf"
+	classid=${onlyfilename/.check.txt/}
+	#echo "*${classid} ${onlyfilename}*" >> "$tmpf"
+	echo "*${classid}*" >> "$tmpf"
 	cat "$inf" >> "$tmpf"
 done
 cat "$tmpf"
