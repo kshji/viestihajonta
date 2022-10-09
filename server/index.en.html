@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Hajonnat tarkistus - Variant checking</title>
+<LINK REL="SHORTCUT ICON" HREF="../addon/aico.ico" />
+
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+
+<link href="../addon/page.css" rel="stylesheet" type="text/css">
+
+<style  rel="stylesheet" type="text/css">
+
+</style>
+
+<script>
+/* hide submit button - active div over button */
+function hidebutton(obj,submitdiv,status) {
+        var di=document.getElementById(submitdiv);
+        if (status==0) { // return visible
+                obj.style.visibility='visible';
+                di.style.visibility='hidden';
+                return;
+                }
+        di.style.visibility='visible';
+	// over button div, size x2 button width
+        di.style.width='' + obj.offsetWidth*2 + 'px';
+        di.style.height='' + obj.offsetHeight + 'px';
+        obj.style.visibility='hidden';
+        di.style.visibility='visible'; // hide - not easy to use anymore
+}
+
+
+</script>
+
+</head>
+<body>
+<div class="ylareuna">
+<a href="https:///awot.fi"><span style="margin:0px;"><img 
+src="https://awot.fi/img/yla_banner_logo_sin130_80.gif" width="130" height="80" alt="Awot" border="0" /></a>
+<br /></div>
+<a href="../">FIN</a> | <a href="../en/">ENG</a>
+<div id="content">
+
+<p>
+<h2>VariantChecker</h2>
+<small>(c) Jukka Inkeri - 2022 -</small>
+</p>
+
+<p style="color:red;"> </p>
+    <form
+      id="form"
+      enctype="multipart/form-data"
+      action="/variantcheck/upload"
+      method="POST"
+      autocomplete="off"
+      class="lomake"
+    >
+<input type="hidden" value="0" name="de"></input>
+<br />
+<br />
+<fieldset>
+<legend>Source data</legend>
+<p>
+<small></small>
+</p>
+
+
+
+	<br />
+	<label for="sala">PIN:</label> 
+          <input class="input" type="text" name="sala" value="" size=10 required 	
+		 minlength='8' 
+		placeholder="PIN 8 chars" />
+	  <a href="#" class="tooltip">?<span class="tooltiptext">not yet in use</span></a>
+	<br />
+	<label for="file">Files:</label> 
+          <input class="input file-input" type="file" name="file" multiple />
+	  <a href="#" class="tooltip">?<span class="tooltiptext">coursefile and team variantfile, look instructions</span></a>
+	<br />
+	<br />
+	<br />
+   	<div id="submitdiv"><img src="data:image/gif;base64,R0
+lGODlhEAAQAPIAAP///wAAAM
+LCwkJCQgAAAGJiYoKCgpKSki
+H/C05FVFNDQVBFMi4wAwEAAA
+Ah/hpDcmVhdGVkIHdpdGggYW
+pheGxvYWQuaW5mbwAh+QQJCg
+AAACwAAAAAEAAQAAADMwi63P
+4wyklrE2MIOggZnAdOmGYJRb
+ExwroUmcG2LmDEwnHQLVsYOd
+2mBzkYDAdKa+dIAAAh+QQJCg
+AAACwAAAAAEAAQAAADNAi63P
+5OjCEgG4QMu7DmikRxQlFUYD
+EZIGBMRVsaqHwctXXf7WEYB4
+Ag1xjihkMZsiUkKhIAIfkECQ
+oAAAAsAAAAABAAEAAAAzYIuj
+IjK8pByJDMlFYvBoVjHA70GU
+7xSUJhmKtwHPAKzLO9HMaoKw
+JZ7Rf8AYPDDzKpZBqfvwQAIf
+kECQoAAAAsAAAAABAAEAAAAz
+MIumIlK8oyhpHsnFZfhYumCY
+UhDAQxRIdhHBGqRoKw0R8DYl
+Jd8z0fMDgsGo/IpHI5TAAAIf
+kECQoAAAAsAAAAABAAEAAAAz
+IIunInK0rnZBTwGPNMgQwmds
+NgXGJUlIWEuR5oWUIpz8pAEA
+Me6TwfwyYsGo/IpFKSAAAh+Q
+QJCgAAACwAAAAAEAAQAAADMw
+i6IMKQORfjdOe82p4wGccc4C
+EuQradylesojEMBgsUc2G7sD
+X3lQGBMLAJibufbSlKAAAh+Q
+QJCgAAACwAAAAAEAAQAAADMg
+i63P7wCRHZnFVdmgHu2nFwlW
+CI3WGc3TSWhUFGxTAUkGCbtg
+ENBMJAEJsxgMLWzpEAACH5BA
+kKAAAALAAAAAAQABAAAAMyCL
+rc/jDKSatlQtScKdceCAjDII
+7HcQ4EMTCpyrCuUBjCYRgHVt
+qlAiB1YhiCnlsRkAAAOwAAAA
+" title="Odota ..."
+</img>
+<br />
+</div>
+<input type="submit" formnovalidate class="submit" value="Check data" name="doit"
+        title="Send files for variantcheck"
+        onClick="hidebutton(this,'submitdiv',1)"
+/>
+
+
+    </fieldset>
+    </form>
+<p>
+The execution takes from a few seconds to max. 30 seconds. It depends on how much data to check.
+</p>
+<hr />
+
+<h2>Instructions</h2>
+<p>
+You need two files to transfer to the server
+</p>
+<ul>
+<li>Coursefile XML IOF 2.0.3 or 3.0 format. 3.0 version version works in all variations.
+</li>
+<li>Variant for teams: From Ocad or csv/lst Pirilä-format.
+<a href="https://github.com/kshji/viestihajonta/blob/main/README.md">More documentation</a> sekä
+</li>
+</ul>
+<p>
+The system automatically recognizes from the filenames which of the attached versions is to be checked.
+</p>
+
+<h3>Ocad files</h3>
+<ul>
+<li>Ratatiedot: Ratasuunnittelu - Vie - Radat IOF XML 3.0, nimeä radat...xml tai course....xml. Tiedoston nimessä oltava <b>radat</b> tai <b>course</b>
+<li>Ratatiedot: Ratasuunnittelu - Vie - Radat IOF XML 3.0, nimeä radat...xml tai course....xml. Filename have to include <b>radat</b> or <b>course</b>
+</li>
+<li>Team variants: Ratasuunnittelu - Vie - Vie joukkuehajonnat. Filename have to include
+<b>joukkuehajon</b> or <b>variant</b> and extension have to be .txt example: compxyz.teamvariant.txt
+</li>
+</ul>
+
+<p>
+The end result is also <b>hajonta.lst</b>, teamvariants csv Pirilä-format.
+</p>
+
+<h3>Ocad coursefile and team variants from csv (Pirilä-format)</h3>
+<ul>
+<li>Ratatiedot: Ratasuunnittelu - Vie - Radat IOF XML 3.0, nimeä radat...xml tai course....xml. Tiedoston nimessä oltava <b>radat</b> tai <b>course</b>
+</li>
+<li>Teamvariants: hajonta.lst (csv, Pirilä-format)
+<b>hajonta</b> tai <b>variant</b> and extension have to be .csv or .lst example: compxyz.variant.lst
+</li>
+</ul>
+
+<h3>Sourcecode</h3>
+<p>
+Software is "Open Source", include CLI version and Web Microserver for online services.
+</p>
+<p>
+<a href="https://github.com/kshji/viestihajonta">Github Viestihajonta</a>
+</p>
+
+<h3>Feedback</h3>
+<p>
+This is 1st version, published 2022-10-06. Send feedback or present some other source material to be solved.
+Contact - look github.
+</p>
+<p>
+Liperi, 6 October 2022<br />
+Jukka Inkeri
+</p>
+</div><!--content-->
+<div class="palkki" width="100%">
+<hr />
+&nbsp;&nbsp;<a href="https://awot.fi">Karjalan ATK-Awot Oy</a>&nbsp;&nbsp;<a href="https://suunnistus.info">Suunnistus.Info</a>
+</div>
+
+  </body>
+</html>
