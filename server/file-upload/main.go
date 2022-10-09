@@ -34,6 +34,7 @@ type MyConfig struct {
 var myParam = new(MyConfig)
 var nonAlphanumericRegex = regexp.MustCompile(`[^a-zA-Z0-9.-_]+`)
 var removeEOL = regexp.MustCompile(`;.*`)
+var language = "fi"
 
 
 ///////////////////////////////////////////////////////////////////////////
@@ -151,9 +152,19 @@ func (pr *Progress) Print() {
 }
 
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
+	indexFile := "index.html"
+	urlPath :=  r.URL.Path
+	fmt.Printf("Index url:%s\n", urlPath)
+	fmt.Println(strings.Replace(urlPath, myParam.urlpath + "/", "", -1))
+	language := strings.Replace(urlPath, myParam.urlpath + "/", "", -1)
+	language = strings.Replace(language, "/", "", -1)
+	fmt.Printf("Lang :%s\n", language)
+	switch language {
+			case "en": indexFile = "index.en.html"
+			case "EN": indexFile = "index.en.html"
+	}
 	w.Header().Add("Content-Type", "text/html")
-	fmt.Printf("url:%s\n", r.URL.Path)
-	http.ServeFile(w, r, "index.html")
+	http.ServeFile(w, r, indexFile )
 }
 
 func AboutHandler(w http.ResponseWriter, r *http.Request) {
@@ -338,6 +349,7 @@ func main() {
 
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", IndexHandler)   // default if next not match
+	mux.HandleFunc(myParam.urlpath + "/en/", IndexHandler)   // en
 	mux.HandleFunc(myParam.urlpath + "/about/", AboutHandler)
 	addOn :=  http.StripPrefix(myParam.urlpath +"/addon/",http.FileServer(http.Dir("./lib")))
 	//http.Handle("/dl/", http.StripPrefix("/dl", http.FileServer(http.Dir("/home/bob/Downloads")))
