@@ -4,6 +4,8 @@
 
 Suunnistuksen viestihajontojen tarkistus. Soveltuu myös henkilökohtaisten kilpailujen hajontojen tarkastukseen.
 
+[English README](https://github.com/kshji/viestihajonta/blob/main/README.EN.md)
+
 Tarkistetaan rastivälitasolla hajonnat eikä vain ratojen hajontatunnuksilla.
 Virhe voi tapahtua esim. siinä, että hajontakoodit olettaa sisältävän tietyn hajonnan, 
 mutta ratatiedostossa onkin eri hajonta.
