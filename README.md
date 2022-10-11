@@ -176,8 +176,8 @@ Kansiossa sourcedata/genericformat on esimerkkitiedostoja, jollaisia voi tuottaa
   * joukkueet hajontakoodeineen: check.teams.csv
 
 ### tarkistus raw
-* check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) --classfile sarjartiedosto(csv) -m 4 
-* check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) --classfile sarjartiedosto(csv) -m raw
+* check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) --classfile sarjatiedosto(csv) -m 4 
+* check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) --classfile sarjatiedosto(csv) -m raw
 ```sh
 ./check.variants.sh -c sourcedata/genericformat/check.controls.csv -t sourcedata/genericformat/check.teams.csv --classfile sourcedata/genericformat/check.class.csv  -m raw
 ```
