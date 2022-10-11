@@ -9,7 +9,7 @@ You need Go-language to build binary server.
 
 You can copy precompiled binary version from **release** directory.
 
-Server run in some free port. Use frontend proxy to redirect to the **variantcheck** server.
+Server run using some free port. Use frontend proxy to redirect to the **variantcheck** server.
 Currently this server not support SSL. Frontend proxy is better place to make generic SSL support for the
 public server.
 
@@ -28,7 +28,8 @@ This server is microserver which only support orienteering cource variant checki
 ```
 
 ## Sourcecode
-I'll publish also server sourcecode after I have tested - enough.
+[Server subsystem](https://github.com/kshji/viestihajonta/tree/main/server). You need to install full system, server use CLI-version. 
+Server is only frontsystem for CLI.
 
 
 ## LICENSE file-upload
