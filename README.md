@@ -111,8 +111,8 @@ Tässä mallissa kaikki ylläpito pitää tehdä Ocad:ssä, ainakin hajontoihin,
 samana hajontana esim. 1AAA, 2AAA, 3AAA voivat olla sama hajonta tai ei. 
 
 ### tarkistus ocad
-check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(txt) -m 1 
-check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(txt) -m ocad
+* check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(txt) -m 1 
+* check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(txt) -m ocad
 ```sh
 ./check.variants.sh -c sourcedata/examples/relay1.course.Courses.v3.xml -t sourcedata/examples/relay1.course.Variations.txt -m ocad
 # tai
@@ -143,8 +143,8 @@ Ko. kaksi tiedostoa oltava käytettävissä, nimentä vapaasti, esim:
  * hajonta.csv
 
 ### tarkistus csv
-check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) -m 2 
-check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) -m csv
+* check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) -m 2 
+* check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) -m csv
 ```sh
 ./check.variants.sh -c sourcedata/examples/radat.v2.kenraali.xml -t sourcedata/examples/hajonta.kenraali.csv -m csv
 ```
@@ -159,8 +159,8 @@ kuinka ko. tiedostot tuotetaan
 
 
 ### tarkistus pirila
-check.variants.sh -c ratatiedosto(xml) -t kisatiedosto(xml) -m 3 
-check.variants.sh -c ratatiedosto(xml) -t kisatiedosto(xml) -m pirila
+* check.variants.sh -c ratatiedosto(xml) -t kisatiedosto(xml) -m 3 
+* check.variants.sh -c ratatiedosto(xml) -t kisatiedosto(xml) -m pirila
 ```sh
 ./check.variants.sh -c sourcedata/examples/radat.v2.kenraali.xml -t sourcedata/examples/pirilasta.kenraali.xml -m pirila
 ```
@@ -172,8 +172,8 @@ Kansiossa sourcedata/genericformat on esimerkkitiedostoja, jollaisia voi tuottaa
   * joukkueet hajontakoodeineen: check.teams.csv
 
 ### tarkistus raw
-check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) --classfile sarjartiedosto(csv) -m 4 
-check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) --classfile sarjartiedosto(csv) -m raw
+* check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) --classfile sarjartiedosto(csv) -m 4 
+* check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) --classfile sarjartiedosto(csv) -m raw
 ```sh
 ./check.variants.sh -c sourcedata/genericformat/check.controls.csv -t sourcedata/genericformat/check.teams.csv --classfile sourcedata/genericformat/check.class.csv  -m raw
 ```

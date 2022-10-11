@@ -35,7 +35,7 @@ Default: all this is already installed
 If you are using WSL or WSL2 (Linux subsystem for Windows), then works just like as in the native Linux.
 
 If you have Windows and not use WSL, then easiest method is to install 
-[Git for Windows](https://gitforwindows.org/). Gitbash include all those neede commands.
+[Git for Windows](https://gitforwindows.org/). Gitbash include all those needed commands.
 On the desktop you have shortcut **GitBash**
 
 ##  Install
@@ -51,17 +51,16 @@ Or download ZIP from Github and unzip it to the some directory.
 
 ## Execute in Windows
 * execute ex. GitBash
-* change working directory to the directory where you have unzipd packet
+* change working directory to the directory where you have unziped packet
 * ex. C:\variantcheck
 ```sh
 cd /c/variantcheck
 ```
 
 ## Examples
-In directory **sourcedata/examples** has some example files. You can try CLI using those examples.
+In the directory **sourcedata/examples** has some example files. You can try CLI using those examples.
 "Kenraali" has three legs, using farsta. "virhe" file include mistakes. 
 
-Ko. kansiossa voit ajaa testiaineistot suoraan komennoilla testi1.sh ... testi7.sh
 In the example directory has testing commands testi1.sh - testi7.sh. You can look those how to run some test competition.
 
 CLI will make always directory ./tmp, there will be result files after executing.
@@ -69,7 +68,7 @@ CLI will make always directory ./tmp, there will be result files after executing
 ./testi1.sh
 ```
 ## Executing priviledges for .sh files
-If .sh files not include exucute priviledge, then add it:
+If .sh files not include execute priviledge, then add it:
 ```sh
 chmod a+rx *.sh sourcedata/examples/*.sh
 ```
@@ -86,25 +85,24 @@ chmod a+rx *.sh sourcedata/examples/*.sh
 Online server include instructions.
 
 # Checking - execute
-##Sourcematerial version 1 - method ocad -  Cources (XML 3.0) and teamsvariations (txt) from Ocad
+## Sourcematerial version 1 - method ocad -  Cources (XML 3.0) and teamsvariations (txt) from Ocad
 **radat.xml** ja **joukkuehajonnat.txt** OR 
 **courses.xml** ja **teamvariants.txt**
 
-Radat tehty Ocad:ssä viestihajontoina.
-Make courses using Ocad, relay variant or individula butterfly variant
+Make courses using Ocad, relay variant or ex. individual butterfly variant
 * Export from Ocad course.xml (IOF 3.0)
 * Export from Ocad team variations teamvariants.txt 
 
-This is checking return always OK. If not then you have big mistakes or Ocad include mistake.
+This checking return always OK. If not then you have big mistakes or Ocad include mistake.
 
 You can also use those result files and make manual editing for variants used by teams.
 Example compare same club teams 1,2,3,... or comparing the best teams variant - not running same forking in same time.
 
-This checking has done special csv file  **hajonta.lst**. You can edit those variants for teams and then use checking method **csv**.
+This checking has done susing special csv file  **hajonta.lst**. You can edit those variants for teams and then use checking method **csv**.
 
 ### check method ocad
-check.variants.sh -c coursefile(xml) -t teamvariant(txt) -m 1 
-check.variants.sh -c coursefile(xml) -t teamvariant(txt) -m ocad
+* check.variants.sh -c coursefile(xml) -t teamvariant(txt) -m 1 
+* check.variants.sh -c coursefile(xml) -t teamvariant(txt) -m ocad
 ```sh
 ./check.variants.sh -c sourcedata/examples/relay1.course.Courses.v3.xml -t sourcedata/examples/relay1.course.Variations.txt -m ocad
 # or
@@ -116,13 +114,12 @@ check.variants.sh -c coursefile(xml) -t teamvariant(txt) -m ocad
 **course.xml** and **variant.csv** / **variant.lst** 
 
  * Ex. Export Cource from Ocad using IOF XML 2.0.3 or 3.0 format 
-   *  Ratatiedot :: Vie :: radat (XML, IOF Versio 2.0.3) ... nimellä **radat.xml** - toki voit nimetä muullakin nimellä, tämä tarkistusohjelma etsii ratatiedot ko. nimisestä tiedostosta.
    *  Course information: Course Setting - Export - Courses IOF XML 3.0, name file courses...xml. Filename have to include **radat** or **course**
  * Teams variant in file **hajonta.csv** (or **variant.csv**)
    *  Pirilä-format (csv), look sourcedata/examples/hajonta.kenraali.csv
      * Sarja=Class,Rata-1 = Leg-1, ...
    *  there could be other columns, but this system use only cols Sarja, No, Rata-1, Rata-2, ..., Rata-25
-   *  all class in the same file
+   *  all classes in the same file
 
 Example: hajonta.csv - variant.csv
 ```csv
@@ -148,8 +145,8 @@ This is example how to process checking when you have set data to the resultsoft
 Export data from resultsystem and then make checking.
 
 ### check method pirila
-check.variants.sh -c coursefile(xml) -t competitiondata_including_teamvariants(csv) -m 3 
-check.variants.sh -c coursefile(xml) -t competitiondata_including_teamvariants(csv) -m pirila
+* check.variants.sh -c coursefile(xml) -t competitiondata_including_teamvariants(csv) -m 3 
+* check.variants.sh -c coursefile(xml) -t competitiondata_including_teamvariants(csv) -m pirila
 ```sh
 ./check.variants.sh -c sourcedata/examples/radat.v2.kenraali.xml -t sourcedata/examples/pirilasta.kenraali.xml -m pirila
 ```
@@ -161,8 +158,8 @@ Kansiossa sourcedata/genericformat on esimerkkitiedostoja, jollaisia voi tuottaa
   * Teams variants: check.teams.csv
 
 ### check method raw
-check.variants.sh -c coursefile(csv) -t variant(csv) --classfile classes(csv) -m 4 
-check.variants.sh -c coursefile(csv) -t variant(csv) --classfile classes(csv) -m raw
+* check.variants.sh -c coursefile(csv) -t variant(csv) --classfile classes(csv) -m 4 
+* check.variants.sh -c coursefile(csv) -t variant(csv) --classfile classes(csv) -m raw
 ```sh
 ./check.variants.sh -c sourcedata/genericformat/check.controls.csv -t sourcedata/genericformat/check.teams.csv --classfile sourcedata/genericformat/check.class.csv  -m raw
 ```
@@ -171,7 +168,7 @@ check.variants.sh -c coursefile(csv) -t variant(csv) --classfile classes(csv) -m
 * report directory which include result files, unique directory after every executing
 
 If there is error in some class, print the class name and show the mistakes.
-Esim. If M21 include errors, then file **M21.check.txt** include error report.
+Example: If M21 include errors, then file **M21.check.txt** include error report.
 
 ```tmp/SomeDirectory/results```
 * normalized data **check.*.csv**
@@ -186,7 +183,7 @@ After checking has done, results direcory include:
 * check.teams.csv,  check.controls.csv,  check.class.csv
 * error report CLASS.check.txt for every classes
 * if not errors, only 1 line = every team has done same variants after legs
-* if mistakes, tel the teamnumber and which control pairs are not same as on the 1st team
+* if mistakes, report include the teamnumber and which control pairs are not same as on the 1st team
 
 ### Example error
 VER-line is the variant for the 1st team
