@@ -25,6 +25,8 @@ Palautetta saa antaa, sposti ihan ok.
 laatikkoon: viestihajonta
 domain: awot.fi
 
+[Keskustelupalsta](https://github.com/kshji/viestihajonta/discussions) on myös käytössä.
+
 Liperissä 25.9.2022, Jukka Inkeri
 
 ## Vaaditut ohjelmistot
