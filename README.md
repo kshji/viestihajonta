@@ -19,7 +19,7 @@ niin kaikki muut joukkueet päätyvät virhelistalle.
 Tarkistuksen voi tehdä jo ennen tulospalveluun viemistä, kunhan on ratatiedosto (XML IOF 2.0.3 tai 3.0) 
 ja hajonta.csv, jossa on kunkin joukkueen käyttämät ratakoodit.
 
-[Online tarkistus](https://awot.fi/variantcheck) versio on nyt myös tarjolla. Lähdekoodeissa on myös palvelimen lähdekoodi, voit pystyttää oman online-palvelimen.
+[Online tarkistus](https://awot.fi/variantcheck/) versio on nyt myös tarjolla. Lähdekoodeissa on myös palvelimen lähdekoodi, voit pystyttää oman online-palvelimen.
 
 Palautetta saa antaa, sposti ihan ok.
 laatikkoon: viestihajonta
