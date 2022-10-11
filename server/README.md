@@ -31,6 +31,9 @@ This server is microserver which only support orienteering cource variant checki
 [Server subsystem](https://github.com/kshji/viestihajonta/tree/main/server). You need to install full system, server use CLI-version. 
 Server is only frontsystem for CLI.
 
+## Discussion/Feedback/... Palaute
+[Discussion](https://github.com/kshji/viestihajonta/discussions) - [Keskustelupalsta](https://github.com/kshji/viestihajonta/discussions)
+
 
 ## LICENSE file-upload
 [Server based on Freshman upload server code](https://github.com/Freshman-tech/file-upload).
