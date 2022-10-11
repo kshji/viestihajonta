@@ -17,7 +17,7 @@ niin kaikki muut joukkueet päätyvät virhelistalle.
 Tarkistuksen voi tehdä jo ennen tulospalveluun viemistä, kunhan on ratatiedosto (XML IOF 2.0.3 tai 3.0) 
 ja hajonta.csv, jossa on kunkin joukkueen käyttämät ratakoodit.
 
-**Online** versio tulee tulevaisuudessa, mutta tässä ohjelmana hätäisimille.
+[Online tarkistus](https://awot.fi/variantcheck) versio on nyt myös tarjolla. Lähdekoodeissa on myös palvelimen lähdekoodi, voit pystyttää oman online-palvelimen.
 
 Palautetta saa antaa, sposti ihan ok.
 laatikkoon: viestihajonta
@@ -105,6 +105,10 @@ MUTTA voit tehdä niinkin, että teet em. tiedostot Ocad:stä ja sen jälkeen mu
 joukkueiden hajontoja vertailen/muokaten, että ovat järkeviä ja että seuran 1, 2, 3 jne. joukkueet ainakin aluksi ovat eri hajonnat.
 
 Tällä ajolla syntyy aputuloksena Pirilä-ohjelman tuntema **hajonta.lst** muotoinen tiedosto - voi lukea lähdedatana Pirilään.
+Ratakoodeja syntyy perus hajontamallissa ihan turhaan, mutta jos
+käytetään farstaa ja kelpaa oletusarvonta joukkeiden hajonnoiksi, niin tätäkin voi käyttää.
+Tässä mallissa kaikki ylläpito pitää tehdä Ocad:ssä, ainakin hajontoihin, koska sama hajonta voi olla useana 
+samana hajontana esim. 1AAA, 2AAA, 3AAA voivat olla sama hajonta tai ei. 
 
 ### tarkistus ocad
 check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(txt) -m 1 
@@ -153,15 +157,10 @@ Lopullinen tarkistus tulee tehdä sillä tiedolla, joka on tulospalveluohjelmass
  * katso erillinen ohje: [https://github.com/kshji/viestihajonta/raw/main/Hajontatarkistus.Lahtotiedot.Pirilasta.pdf](Hajontatarkistus.Lahtotiedot.Pirilasta.pdf) on tarkemmin kuvattu, 
 kuinka ko. tiedostot tuotetaan
 
-Tämän pohja-aineiston käsittely tuottaa sivutuotteena **results/hajonta.csv** Pirilän muotoisen 
-hajonnat joukkueittain tiedoston. Ratakoodeja syntyy perus hajontamallissa ihan turhaan, mutta jos
-käytetään farstaa ja kelpaa oletusarvonta joukkeiden hajonnoiksi, niin tätäkin voi käyttää.
-Tässä mallissa kaikki ylläpito pitää tehdä Ocad:ssä, ainakin hajontoihin, koska sama hajonta voi olla useana 
-samana hajontana esim. 1AAA, 2AAA, 3AAA voivat olla sama hajonta tai ei. 
 
 ### tarkistus pirila
-check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) -m 3 
-check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) -m pirila
+check.variants.sh -c ratatiedosto(xml) -t kisatiedosto(xml) -m 3 
+check.variants.sh -c ratatiedosto(xml) -t kisatiedosto(xml) -m pirila
 ```sh
 ./check.variants.sh -c sourcedata/examples/radat.v2.kenraali.xml -t sourcedata/examples/pirilasta.kenraali.xml -m pirila
 ```
