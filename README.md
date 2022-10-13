@@ -19,11 +19,13 @@ niin kaikki muut joukkueet päätyvät virhelistalle.
 Tarkistuksen voi tehdä jo ennen tulospalveluun viemistä, kunhan on ratatiedosto (XML IOF 2.0.3 tai 3.0) 
 ja hajonta.csv, jossa on kunkin joukkueen käyttämät ratakoodit.
 
-[Online tarkistus](https://awot.fi/variantcheck) versio on nyt myös tarjolla. Lähdekoodeissa on myös palvelimen lähdekoodi, voit pystyttää oman online-palvelimen.
+[Online tarkistus](https://awot.fi/variantcheck/) versio on nyt myös tarjolla. Lähdekoodeissa on myös palvelimen lähdekoodi, voit pystyttää oman online-palvelimen.
 
 Palautetta saa antaa, sposti ihan ok.
 laatikkoon: viestihajonta
 domain: awot.fi
+
+[Keskustelupalsta](https://github.com/kshji/viestihajonta/discussions) on myös käytössä.
 
 Liperissä 25.9.2022, Jukka Inkeri
 
@@ -174,8 +176,8 @@ Kansiossa sourcedata/genericformat on esimerkkitiedostoja, jollaisia voi tuottaa
   * joukkueet hajontakoodeineen: check.teams.csv
 
 ### tarkistus raw
-* check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) --classfile sarjartiedosto(csv) -m 4 
-* check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) --classfile sarjartiedosto(csv) -m raw
+* check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) --classfile sarjatiedosto(csv) -m 4 
+* check.variants.sh -c ratatiedosto(xml) -t hajontatiedosto(csv) --classfile sarjatiedosto(csv) -m raw
 ```sh
 ./check.variants.sh -c sourcedata/genericformat/check.controls.csv -t sourcedata/genericformat/check.teams.csv --classfile sourcedata/genericformat/check.class.csv  -m raw
 ```

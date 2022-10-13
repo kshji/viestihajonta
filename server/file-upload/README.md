@@ -11,3 +11,5 @@ You can give options for server
   * urlpath = used in the page in form, attribute action
   * debug
   * uploaddir
+
+Look example to start, ../server.sh

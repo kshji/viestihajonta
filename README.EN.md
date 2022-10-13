@@ -19,6 +19,8 @@ There is also online service:[Awot variantcheck](https://awot.fi/variantcheck/en
 box: variantcheck
 domain: awot.fi
 
+OR [Discussion](https://github.com/kshji/viestihajonta/discussions) 
+
 Jukka Inkeri
 
 ## Pre install

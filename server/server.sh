@@ -1,4 +1,5 @@
 #!/usr/local/bin/awsh
+# awsh is copy of ksh
 # server.sh
 # This script start checkvariant server
 #
