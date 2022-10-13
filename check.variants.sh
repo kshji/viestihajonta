@@ -52,6 +52,7 @@ usage()
    csv    2  - coursefile from Ocad and team with variants from csv-file - Pirila-format
    pirila 3  - coursefile XML from Pirila-software and teams with variants XML from Pirila-software
    raw    4  - source files are already in csv format which is used in this software
+   os.fi  5  - SportSoftware OS2020 finnish, joukkuehajonnat.csv - yksi tiedosto
  	" >&2 
 }
 
@@ -103,13 +104,18 @@ do
 	shift
 done
 
-[ "$coursefile" = "" -a "$html" = 0 ] && echo "need courses" >&2 && exit 20
-[ "$coursefile" = ""  ] && echo "<p>need coursesfile</p>"  && exit 21
+needcoursefile=1
+case "$method" in
+	os.*) needcoursefile=0 ;;
+esac
+
+[ "$coursefile" = "" -a "$html" = 0 -a "$needcoursefile" = 1 ] && echo "need courses" >&2 && exit 20
+[ "$coursefile" = ""  -a "$needcoursefile" = 1 ] && echo "<p>need coursesfile</p>"  && exit 21
 [ "$teamvariantfile" = "" -a "$html" = 0 ] && echo "need team+variant datafile" >&2 && exit 22
 [ "$teamvariantfile" = ""  ] && echo "<p>need team+variant datafile</p>"  && exit 23
 
 mkdir -p "$tmpdir" 2>/dev/null
-rmbom "$coursefile"
+[ -f "$coursefile" ] && rmbom "$coursefile"
 rmbom "$teamvariantfile"
 
 resdir="$tmpdir/results"
@@ -135,6 +141,10 @@ case "$method" in
 		cp "$coursefile" "$resdir/check.controls.csv"
 		cp "$teamvariantfile" "$resdir/check.teams.csv"
 		cp "$classfile" "$resdir/check.class.csv"
+		;;
+	5|os.fi) # SportSoftware OS2020 soft
+		# source.os.csv.fi.sh
+		$BINDIR/source.os.csv.fi.sh  -t "$teamvariantfile" -i "$myid" -d "$debug" -p "$tmpdir"
 		;;
 	*) # not supported
 		echo "Not supported method:$method" >&2 && exit 10
