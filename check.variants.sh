@@ -18,6 +18,9 @@
 # Ocad + teams variants in csv
 # ./check.variants.sh -c sourcedata/examples/radat.v2.kenraali.xml -t sourcedata/examples/hajonta.kenraali.csv -m 2 -d 0
 # ./check.variants.sh -c sourcedata/examples/radat.v2.kenraali.virhe.xml -t sourcedata/examples/hajonta.kenraali.csv -m 2 -d 0
+# SportSoftware OS2020
+# ./check.variants.sh -t sourcedata/examples/os.joukkuehajonnat.csv -m 5 -d 0
+# ./check.variants.sh -t sourcedata/examples/os.joukkuehajonnat.csv -m os.fi -d 0
 # 
 
 PRG="$0"
@@ -52,6 +55,8 @@ usage()
    csv    2  - coursefile from Ocad and team with variants from csv-file - Pirila-format
    pirila 3  - coursefile XML from Pirila-software and teams with variants XML from Pirila-software
    raw    4  - source files are already in csv format which is used in this software
+   os.fi  5  - SportSoftware OS2020 finnish, os.joukkuehajonnat.csv - yksi tiedosto, sisaltaa joukkueet, osuudet, hajontakoodin, rastikoodit
+   os.en  6  - SportSoftware OS2020 english, os.teamvariants.csv - single file include teams, legs, variantcodes, controls 
  	" 
 }
 
@@ -116,11 +121,17 @@ do
 	shift
 done
 
-[ "$coursefile" = ""  ] && err "need coursesfile"  && exit 21
+needcoursefile=1
+case "$method" in
+        os.*) needcoursefile=0 ;;
+esac
+
+
+[ "$coursefile" = ""  -a "$needcoursefile" = 1 ] && err "need coursesfile"  && exit 21
 [ "$teamvariantfile" = ""  ] && err "need team+variant datafile"  && exit 23
 
 mkdir -p "$tmpdir" 2>/dev/null
-rmbom "$coursefile"
+[ -f "$coursefile" ] && rmbom "$coursefile"
 rmbom "$teamvariantfile"
 
 resdir="$tmpdir/results"
@@ -147,6 +158,14 @@ case "$method" in
 		cp "$teamvariantfile" "$resdir/check.teams.csv"
 		cp "$classfile" "$resdir/check.class.csv"
 		;;
+	5|os.fi) # SportSoftware OS2020 soft finnish
+                # source.os.csv.fi.sh
+                $BINDIR/source.os.csv.fi.sh  -t "$teamvariantfile" -i "$myid" -d "$debug" -p "$tmpdir"
+                ;;
+	6|os.en) # SportSoftware OS2020 soft english
+                # source.os.csv.fi.sh
+                $BINDIR/source.os.csv.en.sh  -t "$teamvariantfile" -i "$myid" -d "$debug" -p "$tmpdir"
+                ;;
 	*) # not supported
 		err "Not supported method:$method"  && exit 10
 		;;
