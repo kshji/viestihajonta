@@ -168,17 +168,16 @@ external software has done this VariantChecker generic csv format.
 ./check.variants.sh -c sourcedata/genericformat/check.controls.csv -t sourcedata/genericformat/check.teams.csv --classfile sourcedata/genericformat/check.class.csv  -m raw
 ```
 
-## Sourcematerial version 5 - os.en - SportSoftware OS2020 (english) 
-Directory sourcedata/examples file *os.teamvariants.csv*, produced using SportSoftware OS2020 (english)
-  * Csv file has done from OS2020 software ...
+## Sourcematerial version - os.en - SportSoftware OS12 (english) 
+Directory sourcedata/examples file *os.teamvariants.csv*, produced using SportSoftware OS12 (english)
+  * Csv file has done from OS12 software ...
   * result is os.teamvariants.csv, file name have to include string *os.team*
     ** csv include all needed information, no need for a separate course file
 
 ### tarkistus raw
-* check.variants.sh -t hajontatiedosto(csv)  -m 5
-* check.variants.sh -t hajontatiedosto(csv)  -m os.fi
+* check.variants.sh -t hajontatiedosto(csv)  -m os.en
 ```sh
-./check.variants.sh -t sourcedata/examples/os.joukkuehajonnat.csv  -m os.fi
+./check.variants.sh -t sourcedata/examples/os.teamvariants.csv  -m os.en
 ```
 
 
@@ -237,7 +236,7 @@ Directory maps include Ocad examplefiles
 
 # History
 
-* 2022-10-14 added support for SportSoftware OS2020 (finnish version)
+* 2022-10-14 added support for SportSoftware OS12 (finnish version)
 * 2022-09-24 version 1 VariantChecker has published
 * 2022 Finnish Championship relay - discarded seven classes
 
