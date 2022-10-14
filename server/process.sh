@@ -29,8 +29,8 @@ done
 for inf in $*
 do
 	case "$inf" in
-		os.joukkue*) teamvariantfile="$inf" ; method=os.fi ;;
-		os.team*) teamvariantfile="$inf" ; courcefile="-"; method=os.en ;;
+		*os.joukkue*) teamvariantfile="$inf" ; method=os.fi ;;
+		*os.team*) teamvariantfile="$inf" ; courcefile="-"; method=os.en ;;
 		*Radat*.xml|*radat*.xml|*courses*.xml|*Courses*.xml) courcefile="$inf" ;;
 		*varian*.txt|*Variations*.txt|*variations*.txt|*joukkuehajonna*.txt|*teamvarian*.txt)  teamvariantfile="$inf" ; method=ocad ;;
 		*hajonta*.csv|*hajonta*.lst|*variant*.lst|*varian*.csv)  teamvariantfile="$inf" ; method=csv;;
