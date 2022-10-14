@@ -23,6 +23,7 @@ NR==1 { # csv header
 	print flds["Lnro"]
 	print flds["Osuus"]
 	print flds["Ratanro"]
+	print flds["Hajontavaihtoehto"]
 	next
 	}
 NF < 2 { next }
@@ -33,7 +34,7 @@ $1 ~ /^*/ { # some debug line
 	classid=$flds["Sarja"]
 	teamid=$flds["Lnro"]
 	legid=$flds["Osuus"]
-	variantid=$flds["Ratanro"]
+	variantid=$flds["Ratanro"] $flds["Hajontavaihtoehto"]
 	if (debug>1) print "*",classid,teamid,legid,variantid
 	print classid,teamid,legid,variantid
 }

@@ -36,7 +36,7 @@ NF < 2 { next }
 {
 
 	
-	variantid=$flds["Ratanro"]
+	variantid=$flds["Ratanro"] $flds["Hajontavaihtoehto"]
 	# need to set variant once
 	if (variants[variantid] != "" ) next
 	variants[variantid]=variantid
