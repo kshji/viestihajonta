@@ -1,4 +1,5 @@
 # Viestihajonta tarkistusjärjestelmä - Orienteering forking/variants checking 
+## Hajontatarkastaja - VariantChecker
 
 (c) Jukka Inkeri  2022-
 
@@ -181,6 +182,19 @@ Kansiossa sourcedata/genericformat on esimerkkitiedostoja, jollaisia voi tuottaa
 ```sh
 ./check.variants.sh -c sourcedata/genericformat/check.controls.csv -t sourcedata/genericformat/check.teams.csv --classfile sourcedata/genericformat/check.class.csv  -m raw
 ```
+## Lähdemateriaali versio 5 - os.fi - aineisto on tuotettu SportSoftware OS2020, suomenkielisestä -ohjelmasta
+Kansiossa sourcedata/examples on tiedosto *os.joukkuehajonnat.csv*, joka on tuotettu OS2020 ohjelmasta
+  * Tiedosto tuotetaan OS2020 ohjelmasta ...
+  * lopputuloksena os.joukkuehajonnat.csv, nimessä oltava *os.joukkue*, siitä tarkastaja tunnistaa formaatin
+    ** ko. tiedosto sisältää kaiken tarvittavan, erillistä ratatiedostoa ei tarvita
+
+### tarkistus raw
+* check.variants.sh -t hajontatiedosto(csv)  -m 5 
+* check.variants.sh -t hajontatiedosto(csv)  -m os.fi
+```sh
+./check.variants.sh -t sourcedata/examples/os.joukkuehajonnat.csv  -m os.fi
+```
+
 
 ## Lopputulos
 Tarkistusajo kertoo lopuksi missä kansiossa on tarkistusajon kaikki tiedostot tallessa.
@@ -252,4 +266,5 @@ Kansiossa maps on esimerkkejä Ocad:ssä.
   
 
 # Historia
+* 2022-10-14 Lisätty SportSoftware OS2020 (suomenkielinen) tuki - Added SportSoftware OS2020 (finnish) support
 * 2022 SM-Viestin hajontavirheet toimi kimmokkeena, versio 1 on luotu 24.9.2022

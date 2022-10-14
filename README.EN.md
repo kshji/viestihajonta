@@ -1,4 +1,4 @@
-# Orienteering forking/variants checking 
+# Orienteering forking/variants checking  - VariantChecker
 
 (c) Jukka Inkeri  2022-
 
@@ -8,7 +8,8 @@ Check variant using legs (control to control pairs) used by competitor/team. Not
 Even variant codes look okay, course data can include mistakes. This checking system checks also 
 control codes = used legs.
 
-All teams have run the same leg variations at the end of the relay. Counting control to control pairs, count have to be same.
+All teams have run the same leg variations at the end of the relay. 
+Counting control to control pairs, count have to be same.
 
 1st team is the default value which is used to comparing variations for other teams in the same class.
 If the 1st team contains a mistake, all the rest of the teams go to the mistake list.
@@ -154,7 +155,8 @@ Export data from resultsystem and then make checking.
 ```
 
 ## Sourcematerial version  4 - raw - sourcedata has done already to the normalized (csv, delimiter |)
-Kansiossa sourcedata/genericformat on esimerkkitiedostoja, jollaisia voi tuottaa valmiiksi.
+Directory sourcedata/genericformat include example files, 
+external software has done this VariantChecker generic csv format.
   * Class : check.class.csv
   * Variants with controls :  check.controls.csv
   * Teams variants: check.teams.csv
@@ -165,6 +167,20 @@ Kansiossa sourcedata/genericformat on esimerkkitiedostoja, jollaisia voi tuottaa
 ```sh
 ./check.variants.sh -c sourcedata/genericformat/check.controls.csv -t sourcedata/genericformat/check.teams.csv --classfile sourcedata/genericformat/check.class.csv  -m raw
 ```
+
+## Sourcematerial version 5 - os.en - SportSoftware OS2020 (english) 
+Directory sourcedata/examples file *os.teamvariants.csv*, produced using SportSoftware OS2020 (english)
+  * Csv file has done from OS2020 software ...
+  * result is os.teamvariants.csv, file name have to include string *os.team*
+    ** csv include all needed information, no need for a separate course file
+
+### tarkistus raw
+* check.variants.sh -t hajontatiedosto(csv)  -m 5
+* check.variants.sh -t hajontatiedosto(csv)  -m os.fi
+```sh
+./check.variants.sh -t sourcedata/examples/os.joukkuehajonnat.csv  -m os.fi
+```
+
 
 ## Result
 * report directory which include result files, unique directory after every executing
@@ -218,3 +234,10 @@ rm -rf [0-9]*
 # Example coursefile Ocad
 Directory maps include Ocad examplefiles
 * relay1 has used in testi6.sh 
+
+# History
+
+* 2022-10-14 added support for SportSoftware OS2020 (finnish version)
+* 2022-09-24 version 1 VariantChecker has published
+* 2022 Finnish Championship relay - discarded seven classes
+
