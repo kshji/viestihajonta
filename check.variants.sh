@@ -46,21 +46,33 @@ clean()
 ########################################################################
 usage()
 {
-        echo "usage:$PRG -c coursesfile -t teamsvariantsfile -m method [ -i sessioid -p tempdir -d 0/1 ] # d=debug " >&2
-	echo "  methdod
+        err "usage:$PRG -c coursesfile -t teamsvariantsfile -m method [ -i sessioid -p tempdir -d 0/1 ] # d=debug " 
+	err "  methdod
    ocad   1  - source files - course IOF XML 3.0 and teamvariants.txt from Ocad
    csv    2  - coursefile from Ocad and team with variants from csv-file - Pirila-format
    pirila 3  - coursefile XML from Pirila-software and teams with variants XML from Pirila-software
    raw    4  - source files are already in csv format which is used in this software
-   os.fi  5  - SportSoftware OS2020 finnish, joukkuehajonnat.csv - yksi tiedosto
- 	" >&2 
+ 	" 
+}
+
+
+##########################################################################
+msg()
+{
+        echo "$*" >&2
+}
+
+##########################################################################
+err()
+{
+        echo "$*"
 }
 
 ########################################################################
 # - remove UTF-8 magic and DOS cr
 rmbom()
 {
-        [ "$1" = "" ] && echo "usage:rmbom infile" >&2 && exit 1
+        [ "$1" = "" ] && msg "usage:rmbom infile" && exit 1
         inf="$1"
         tf="$tmpdir"/bom.$$.tmp
         sed -e '1s/^\xef\xbb\xbf//' "$inf" | tr -d '\015' > "$tf"
@@ -104,18 +116,11 @@ do
 	shift
 done
 
-needcoursefile=1
-case "$method" in
-	os.*) needcoursefile=0 ;;
-esac
-
-[ "$coursefile" = "" -a "$html" = 0 -a "$needcoursefile" = 1 ] && echo "need courses" >&2 && exit 20
-[ "$coursefile" = ""  -a "$needcoursefile" = 1 ] && echo "<p>need coursesfile</p>"  && exit 21
-[ "$teamvariantfile" = "" -a "$html" = 0 ] && echo "need team+variant datafile" >&2 && exit 22
-[ "$teamvariantfile" = ""  ] && echo "<p>need team+variant datafile</p>"  && exit 23
+[ "$coursefile" = ""  ] && err "need coursesfile"  && exit 21
+[ "$teamvariantfile" = ""  ] && err "need team+variant datafile"  && exit 23
 
 mkdir -p "$tmpdir" 2>/dev/null
-[ -f "$coursefile" ] && rmbom "$coursefile"
+rmbom "$coursefile"
 rmbom "$teamvariantfile"
 
 resdir="$tmpdir/results"
@@ -125,7 +130,7 @@ rm -f "$resdir"/*.check*.csv "$resdir"/*.check*.txt "$resdir"/variants.csv "$tmp
 
 case "$method" in 
 	1|ocad) # Ocad course xml 3.0 and Ocad teams
-		((debug>0)) && echo "$BINDIR/source.ocad.sh -c $coursefile -t $teamvariantfile -i $myid -d $debug -p $tmpdir"
+		((debug>0)) && msg "$BINDIR/source.ocad.sh -c $coursefile -t $teamvariantfile -i $myid -d $debug -p $tmpdir"
 		$BINDIR/source.ocad.sh -c "$coursefile" -t "$teamvariantfile" -i "$myid" -d "$debug" -p "$tmpdir"
 		;;
 	2|csv) # Ocad course xml 2.0.3/3.0  and teams with forks csv
@@ -135,19 +140,15 @@ case "$method" in
 		$BINDIR/source.pirila.sh -c "$coursefile" -t "$teamvariantfile" -i "$myid" -d "$debug" -p "$tmpdir"
 		;;
 	4|raw) # All files is already in needed generic csv format - only copy ...
-		[ "$classfile" = "" ] && echo "need classfile" >&2 && exit 41
-		[ ! -f "$classfile" ] && echo "classfile $classfile ???" >&2 && exit 42
+		[ "$classfile" = "" ] && err "need classfile" && exit 41
+		[ ! -f "$classfile" ] && err "classfile $classfile ???" && exit 42
 		rmbom "$classfile"
 		cp "$coursefile" "$resdir/check.controls.csv"
 		cp "$teamvariantfile" "$resdir/check.teams.csv"
 		cp "$classfile" "$resdir/check.class.csv"
 		;;
-	5|os.fi) # SportSoftware OS2020 soft
-		# source.os.csv.fi.sh
-		$BINDIR/source.os.csv.fi.sh  -t "$teamvariantfile" -i "$myid" -d "$debug" -p "$tmpdir"
-		;;
 	*) # not supported
-		echo "Not supported method:$method" >&2 && exit 10
+		err "Not supported method:$method"  && exit 10
 		;;
 esac
 
