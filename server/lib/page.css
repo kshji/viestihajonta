@@ -5,11 +5,13 @@
 html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
 
 body {  
-    	font-family: "Source Sans Pro",sans-serif;
+    	//font-family: "Source Sans Pro",sans-serif;
+	font-family: jost,Helvetica Neue,Helvetica,Arial,sans-serif;
         border-width: 0px;
         margin: 0px;
         padding: 0px;
         border-left:1px solid #aaa;
+        -webkit-font-smoothing: antialiased;
       }
 
 .lomake, form {
