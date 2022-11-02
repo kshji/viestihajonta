@@ -141,7 +141,7 @@ The execution takes from a few seconds to max. 30 seconds. It depends on how muc
 
 <h2>Instructions</h2>
 <p>
-You need two files to transfer to the server
+You need two files to transfer to the server:
 </p>
 <ul>
 <li>Coursefile XML IOF 2.0.3 or 3.0 format. 3.0 version version works in all variations.
@@ -151,7 +151,7 @@ You need two files to transfer to the server
 </li>
 </ul>
 <p>
-The system automatically recognizes from the filenames which of the attached versions is to be checked.
+The system automatically identifies from the file name which of the three versions is being checked.
 </p>
 
 <h3>Ocad files</h3>
@@ -164,7 +164,7 @@ The system automatically recognizes from the filenames which of the attached ver
 </ul>
 
 <p>
-The end result is also <b>hajonta.lst</b>, teamvariants csv Pirilä-format.
+The end result is also <b>hajonta.lst</b>, which can be used as a basis for making team-specific variants in the Pirilä-program.
 </p>
 
 <h3>Ocad coursefile and team variants from csv (Pirilä-format)</h3>
@@ -178,13 +178,17 @@ The end result is also <b>hajonta.lst</b>, teamvariants csv Pirilä-format.
 
 
 <h3>SportSoftware OS12 -relay program</h3>
+<p>
+When using the OS12-relayprogram, the last check should be done with the information in the result service program.
+</p>
+
 <a href="https://sportsoftware.de/orienteering/os">SportSoftware</a> english version, OS12 relayprogram
 
 <ul>
 <li>Here menu steps to produce teamvariants.csv ...
-<li>csv-file name have to include string <b>os.team</b>
+<li>csv-filename must contain the string <b>os.team</b>
 </li>
-<li>csv include all needed information, no need for a separate course file
+<li>csv contains everything you need, no need for a separate course file
 </li>
 </ul>
 
@@ -193,7 +197,8 @@ The end result is also <b>hajonta.lst</b>, teamvariants csv Pirilä-format.
 
 <h3>Sourcecode</h3>
 <p>
-Software is "Open Source", include CLI version and Web Microserver for online services.
+The whole package is open source, so you can either use it command-line on your own machine or 
+set up an online service like this service is made.
 </p>
 <p>
 <a href="https://github.com/kshji/viestihajonta">Github Viestihajonta</a>
@@ -201,7 +206,7 @@ Software is "Open Source", include CLI version and Web Microserver for online se
 
 <h3>Feedback</h3>
 <p>
-This is 1st version, published 2022-10-06. Send feedback or present some other source material to be solved.
+This is version 1, published 2022-10-06. I welcome feedback, especially if and when bugs are found.
 Contact - look github.
 </p>
 <p>
