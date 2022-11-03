@@ -184,8 +184,18 @@ When using the OS12-relayprogram, the last check should be done with the informa
 
 <a href="https://sportsoftware.de/orienteering/os">SportSoftware</a> english version, OS12 relayprogram
 
+The file is generated from the OS12 program:
 <ul>
-<li>Here menu steps to produce teamvariants.csv ...
+<li>Courses :: Reports :: Course distribution :: Export :: Standard
+</li>
+<li>Select Columns separated by character (CSV), the Delimiter is a semicolon (;) and the String Delimiter can also be off or a quotation mark "
+</li>
+<li>give the file name something starting with <b>os.team</b> and ending with <b>.csv</b>. In between, there may be a competition identifier or be missing
+the final result is <b>os.team.csv</b>, the name must be <b>os.team</b>, that's how the format is identified by the checker
+</li>
+<li>
+this file contains everything needed, no separate track file is needed
+</li>
 <li>csv-filename must contain the string <b>os.team</b>
 </li>
 <li>csv contains everything you need, no need for a separate course file
