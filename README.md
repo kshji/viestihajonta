@@ -183,10 +183,17 @@ Kansiossa sourcedata/genericformat on esimerkkitiedostoja, jollaisia voi tuottaa
 ./check.variants.sh -c sourcedata/genericformat/check.controls.csv -t sourcedata/genericformat/check.teams.csv --classfile sourcedata/genericformat/check.class.csv  -m raw
 ```
 ## Lähdemateriaali versio 5 - os.fi - aineisto on tuotettu SportSoftware OS12, suomenkielisestä -ohjelmasta
-Kansiossa sourcedata/examples on tiedosto *os.joukkuehajonnat.csv*, joka on tuotettu OS12 ohjelmasta
-  * Tiedosto tuotetaan OS12 ohjelmasta ...
+Kansiossa sourcedata/examples on tiedosto *os.joukkuehajonnat.csv*, joka on tuotettu OS12 ohjelmasta.
+
+katso erillinen ohje: [https://github.com/kshji/viestihajonta/raw/main/Hajontatarkistus.Lahtotiedot.OS12.pdf](Hajontatarkistus.Lahtotiedot.OS12.pdf) on tarkemmin kuvattu,
+kuinka ko. tiedostot tuotetaan Sport Software:n OS12 viestiohjelmasta.
+
+  * Tiedosto tuotetaan OS12 ohjelmasta:
+    * Radat :: Raportit :: Joukkuehajonnat :: Vie :: Oletus
+	* Valitaan *Merkkierotellut sarakkeet (CSV)*, erotin puolipiste (;) ja erotinmerkki voi olla myös pois tai lainausmerkki
+        * annetaan tiedoston nimeksi jotain, joka alkaa *os.joukkue* ja loppu on <b>.csv</b>. Välissä voi olla vaikka kisan tunniste tai puuttua
   * lopputuloksena os.joukkuehajonnat.csv, nimessä oltava *os.joukkue*, siitä tarkastaja tunnistaa formaatin
-    ** ko. tiedosto sisältää kaiken tarvittavan, erillistä ratatiedostoa ei tarvita
+    * ko. tiedosto sisältää kaiken tarvittavan, erillistä ratatiedostoa ei tarvita
 
 ### tarkistus raw
 * check.variants.sh -t hajontatiedosto(csv)  -m 5 
@@ -268,3 +275,4 @@ Kansiossa maps on esimerkkejä Ocad:ssä.
 # Historia
 * 2022-10-14 Lisätty SportSoftware OS12 (suomenkielinen) tuki - Added SportSoftware OS12 (finnish) support
 * 2022 SM-Viestin hajontavirheet toimi kimmokkeena, versio 1 on luotu 24.9.2022
+
