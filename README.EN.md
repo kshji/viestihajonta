@@ -172,7 +172,7 @@ external software has done this VariantChecker generic csv format.
 ```
 
 ## Data source version 5 - os.en - SportSoftware OS12 (english) 
-Directory sourcedata/examples file *os.teamvariants.csv*, created using SportSoftware OS12 (english)
+Directory sourcedata/examples file **os.teamvariants.csv**, created using SportSoftware OS12 (english)
 
 See separate instructions: [https://github.com/kshji/viestihajonta/raw/main/VariantChecker.SourceData.OS12.pdf](VariantChecker.SourceData.OS12.pdf)
 describes in more detail how to generate the files from the Sport Software OS12 message program.
@@ -184,8 +184,8 @@ describes in more detail how to generate the files from the Sport Software OS12 
   * the final result is os.team.csv, the name must be **os.team**, that's how the format is identified by the checker
     * this file contains everything needed, no separate track file is needed
 
-### tarkistus raw
-* check.variants.sh -t hajontatiedosto(csv)  -m os.en
+### check method os.en
+* check.variants.sh -t teamvariantsfile(csv)  -m os.en
 ```sh
 ./check.variants.sh -t sourcedata/examples/os.teamvariants.csv  -m os.en
 ```

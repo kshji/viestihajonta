@@ -195,7 +195,7 @@ on tarkemmin kuvattu, kuinka ko. tiedostot tuotetaan Sport Software:n OS12 viest
   * lopputuloksena os.joukkuehajonnat.csv, nimessä oltava **os.joukkue**, siitä tarkastaja tunnistaa formaatin
     * ko. tiedosto sisältää kaiken tarvittavan, erillistä ratatiedostoa ei tarvita
 
-### tarkistus raw
+### tarkistus os.fi
 * check.variants.sh -t hajontatiedosto(csv)  -m 5 
 * check.variants.sh -t hajontatiedosto(csv)  -m os.fi
 ```sh
