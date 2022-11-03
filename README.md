@@ -183,16 +183,16 @@ Kansiossa sourcedata/genericformat on esimerkkitiedostoja, jollaisia voi tuottaa
 ./check.variants.sh -c sourcedata/genericformat/check.controls.csv -t sourcedata/genericformat/check.teams.csv --classfile sourcedata/genericformat/check.class.csv  -m raw
 ```
 ## Lähdemateriaali versio 5 - os.fi - aineisto on tuotettu SportSoftware OS12, suomenkielisestä -ohjelmasta
-Kansiossa sourcedata/examples on tiedosto *os.joukkuehajonnat.csv*, joka on tuotettu OS12 ohjelmasta.
+Kansiossa sourcedata/examples on tiedosto **os.joukkuehajonnat.csv**, joka on tuotettu OS12 ohjelmasta.
 
-katso erillinen ohje: [https://github.com/kshji/viestihajonta/raw/main/Hajontatarkistus.Lahtotiedot.OS12.pdf](Hajontatarkistus.Lahtotiedot.OS12.pdf) on tarkemmin kuvattu,
-kuinka ko. tiedostot tuotetaan Sport Software:n OS12 viestiohjelmasta.
+Katso erillinen ohje: [https://github.com/kshji/viestihajonta/raw/main/Hajontatarkistus.Lahtotiedot.OS12.pdf](Hajontatarkistus.Lahtotiedot.OS12.pdf) 
+on tarkemmin kuvattu, kuinka ko. tiedostot tuotetaan Sport Software:n OS12 viestiohjelmasta.
 
   * Tiedosto tuotetaan OS12 ohjelmasta:
     * Radat :: Raportit :: Joukkuehajonnat :: Vie :: Oletus
-	* Valitaan *Merkkierotellut sarakkeet (CSV)*, erotin puolipiste (;) ja erotinmerkki voi olla myös pois tai lainausmerkki
-        * annetaan tiedoston nimeksi jotain, joka alkaa *os.joukkue* ja loppu on <b>.csv</b>. Välissä voi olla vaikka kisan tunniste tai puuttua
-  * lopputuloksena os.joukkuehajonnat.csv, nimessä oltava *os.joukkue*, siitä tarkastaja tunnistaa formaatin
+	* Valitaan **Merkkierotellut sarakkeet (CSV)**, erotin puolipiste (;) ja erotinmerkki voi olla myös pois tai lainausmerkki
+        * annetaan tiedoston nimeksi jotain, joka alkaa **os.joukkue** ja loppu on **csv**. Välissä voi olla vaikka kisan tunniste tai puuttua
+  * lopputuloksena os.joukkuehajonnat.csv, nimessä oltava **os.joukkue**, siitä tarkastaja tunnistaa formaatin
     * ko. tiedosto sisältää kaiken tarvittavan, erillistä ratatiedostoa ei tarvita
 
 ### tarkistus raw

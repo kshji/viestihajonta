@@ -171,11 +171,18 @@ external software has done this VariantChecker generic csv format.
 ./check.variants.sh -c sourcedata/genericformat/check.controls.csv -t sourcedata/genericformat/check.teams.csv --classfile sourcedata/genericformat/check.class.csv  -m raw
 ```
 
-## Data source version - os.en - SportSoftware OS12 (english) 
-Directory sourcedata/examples file *os.teamvariants.csv*, produced using SportSoftware OS12 (english)
-  * Csv file is created with OS12 software ...
-  * result is os.teamvariants.csv, file name have to include string *os.team*
-    ** csv file includes all needed information, thus there is no need for a separate course file
+## Data source version 5 - os.en - SportSoftware OS12 (english) 
+Directory sourcedata/examples file *os.teamvariants.csv*, created using SportSoftware OS12 (english)
+
+See separate instructions: [https://github.com/kshji/viestihajonta/raw/main/VariantChecker.SourceData.OS12.pdf](VariantChecker.SourceData.OS12.pdf)
+describes in more detail how to generate the files from the Sport Software OS12 message program.
+
+  * The file is generated from the OS12 program:
+    * Courses :: Reports :: Course distribution :: Export :: Standard 
+        * Select **Columns separated by character (CSV)**, the Delimiter is a semicolon (;) and the String Delimiter can also be off or a quotation mark "
+        * give the file name something starting with **os.team** and ending with **csv**. In between, there may be a competition identifier or be missing
+  * the final result is os.team.csv, the name must be **os.team**, that's how the format is identified by the checker
+    * this file contains everything needed, no separate track file is needed
 
 ### tarkistus raw
 * check.variants.sh -t hajontatiedosto(csv)  -m os.en
