@@ -58,7 +58,8 @@ käytetty tehdessä lopullisia paino/tulostusversioita ja kirjattu tulospalveluo
   * jos haluat keskustella tästä esityskokonaisuudesta, niin ota yhteyttä
 
 ### Muita vastaavia työkaluja
-* Petteri Laitinen teki 2019 Jukolaan itselleen välineet [PetteriLaitinen](https://github.com/plcodes/ocourse-forker)
+* Petteri Laitinen teki 2019 Jukolaan itselleen välineet [Petteri Laitisen ocourse-forke](https://github.com/plcodes/ocourse-forker)
+* [Matti Tahvosen hajontarkastaja](https://github.com/mstahv/gafflingvalidator)
 
 ## Vaaditut ohjelmistot
 ### Linux ja OS-X
