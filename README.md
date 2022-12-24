@@ -30,6 +30,36 @@ domain: awot.fi
 
 Liperissä 25.9.2022, Jukka Inkeri
 
+## Taustaa
+* hajontavariaatioiden hallintaan on "liikenteessä" useitakin Excel versioita, erityisesti käytetty Jukolassa
+  * sisältää myös tarkastuslaskennan, että joukkueille tulee kaikki variaatiot käytettyä oikein - lopulta
+  * ei tarkista rastivälejä - oletus on, että variaatiot ovat oikein määritelty
+* Petteri Laitinen tehnyt [nettiversiona](https://plcodes.github.io/ocourse-forker/) hieman pidemmälle viedyn version, 
+  sisältää myös rastit = rastivälit
+
+### Missä voi vielä edellisten jälkeen mennä pieleen? 
+* Jos ja kun jokainen käytettävä variaatio kirjataankin Ocadiin kukin itsenäisenä ratana, niin rata voi tässä kohtaa
+  muuttua - kuten on käynyt - Petterin systeemi tarjoaa valmiin XML:n ladattavaksi takaisin Ocadiin - syntyy
+  radat ok, eikä vain variaatiot koodattu "oikein" - tämä vaihe tehdään ylisesti manuaalisesti = tässä kohtaa suuri
+  riski - kuten taisi käydä SM-viestissä - oletan, että tässä syntyi virheet. Kopio-Muokkaa on vaarallinen kombinaatio.
+* Siksi on tärkeää, että tarkistus tehdään vielä ko. vaiheen jälkeen. Siihen tämä tarkastaja ja [Matti Tahvosen hajontarkastaja](https://github.com/mstahv/gafflingvalidator) ovat ratkaisuna. Käyttää datana sitä dataa, joka on Ocad:ssä 
+käytetty tehdessä lopullisia paino/tulostusversioita ja kirjattu tulospalveluohjelmaan.
+* tulospalveluohjelmaan data tulisi tuottaa niistä CAD-versioista, joilla kartat painetaan/tulostetaan, ei saa
+ olla eri haara prosessissa
+
+### Jatko
+* Olen avannut keskustelun Ocadin kanssa, jotta ko. prosessiputki olisi tuettuna Ocadissä, mm:
+  * manipuloidut hajontavariaatiot joukkueille kiinnitettynä voitava lukea takaisin Ocadiin, ei vain radat
+  * visuaalinen tarkistusmerkintä kullekin variaatiolle, olen käyttänyt ko. tarkoituksen omaa "viritystä", mutta
+    turhan työläs, helppo koodata osaksi Ocadiä
+  * hajontatunnisteet voitava itse antaa kullekin hajontapaketille, eikä aina automaattisetsi ABC...
+    ** mahdollistaa rajata variaatioita motala, vännes, tupla-vännes jne. tyyliseksi eikä aina farsta.
+  * ...
+  * jos haluat keskustella tästä esityskokonaisuudesta, niin ota yhteyttä
+
+### Muita vastaavia työkaluja
+* Petteri Laitinen teki 2019 Jukolaan itselleen välineet [PetteriLaitinen](https://github.com/plcodes/ocourse-forker)
+
 ## Vaaditut ohjelmistot
 ### Linux ja OS-X
 Oletettavasti kaikki on jo valmiina
