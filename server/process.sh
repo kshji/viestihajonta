@@ -7,11 +7,13 @@ classfile=""
 method=""
 sourcedir=""
 debug=0
+pin=""
 while [ $# -gt 0 ]
 do
 	arg="$1"
 	case "$arg" in
 		-d) debug="$2" ; shift ;;
+		-i) pin="$2" ; shift ;;
 		-p) sourcedir="$2" ; shift ;;
 		-c) courcefile="$2" ; shift ;;
 		-t) teamvariantfile="$2" ; shift ;;
