@@ -26,6 +26,7 @@ done
 (( debug > 8 )) && echo "Params $*"
 (( debug > 8 )) && echo "Nice!"
 (( debug > 8 )) && date
+echo "pin:$pin"
 
 
 for inf in $*
