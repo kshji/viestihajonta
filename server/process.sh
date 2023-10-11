@@ -97,8 +97,8 @@ do
 	echo "*${classid}*" >> "$tmpf"
 
 	lines=$(cat "$inf" | wc -l)
-        ((lines>1)) && echo " - Variant error class $classid"
-        ((lines<2)) && echo " - Variant OK class $classid"
+        ((lines>1)) && echo "Variant error class $classid :" >> "$tmpf"
+        ((lines<2)) && echo "Variant OK class $classid :" >> "$tmpf"
 	cat "$inf" >> "$tmpf"
 done
 cat "$tmpf"
