@@ -21,9 +21,9 @@ do
 	esac
 	shift
 done
-(( debug > 0 )) && echo "Params $*"
-(( debug > 0 )) && echo "Nice!"
-(( debug > 0 )) && date
+(( debug > 8 )) && echo "Params $*"
+(( debug > 8 )) && echo "Nice!"
+(( debug > 8 )) && date
 
 
 for inf in $*
@@ -38,10 +38,10 @@ do
 	esac
 done
 
-((debug>0)) && echo "sourcedir  :$sourcedir"
-((debug>0)) && echo "course     :$courcefile"
-((debug>0)) && echo "teamvariant:$teamvariantfile"
-((debug>0)) && echo "method     :$method"
+((debug>8)) && echo "sourcedir  :$sourcedir"
+((debug>8)) && echo "course     :$courcefile"
+((debug>8)) && echo "teamvariant:$teamvariantfile"
+((debug>8)) && echo "method     :$method"
 
 linestr="____________________________________________________________________"
 echo "
@@ -52,7 +52,7 @@ set +m;shopt -s lastpipe
 ../check.variants.sh -c "$sourcedir/$courcefile" -t "$sourcedir/$teamvariantfile" -m "$method" 2>/dev/null | \
 while read key line
 do
-        ((debug>0)) && echo "* $key $line" >&2
+        ((debug>8)) && echo "* $key $line" >&2
         dir="$line"
 done #</dev/stdin
 #echo "$dir"
@@ -102,6 +102,16 @@ do
 	cat "$inf" >> "$tmpf"
 done
 cat "$tmpf"
+
+if ((debug==1)) ; then
+	echo "Tiedostot - Files" >> "$tmpf"
+	echo "___________________________________________________________" >> "$tmpf"
+	echo "" >> "$tmpf"
+	echo "check.class.csv" >> "$tmpf"
+	cat "$dir/check.class.csv" >> "$tmpf"
+fi
+
+
 sleep 1
 rm -f "$tmpf" 2>/dev/null
 echo "$linestr"
