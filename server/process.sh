@@ -28,7 +28,7 @@ done
 (( debug > 8 )) && date
 pin=${pin//[/}
 pin=${pin//]/}
-echo "pin:$pin"
+echo "pin:<$pin>"
 
 
 for inf in $*
@@ -106,7 +106,6 @@ do
         ((lines<2)) && echo "Variant OK class $classid :" >> "$tmpf"
 	cat "$inf" >> "$tmpf"
 done
-cat "$tmpf"
 
 if [ "$pin" = "1" ] ; then
 	echo "Tiedostot - Files" >> "$tmpf"
@@ -116,6 +115,7 @@ if [ "$pin" = "1" ] ; then
 	cat "$dir/check.class.csv" >> "$tmpf"
 fi
 
+cat "$tmpf"
 
 sleep 1
 rm -f "$tmpf" 2>/dev/null
