@@ -118,6 +118,7 @@ do
 	check_variant "$classid" "$input" > "$resdir/$classid.check.txt"
 	lines=$(cat "$resdir/$classid.check.txt" | wc -l)
 	((lines>1)) && echo " - Variant error class $classid"
+	((lines<2)) && echo " - Variant OK class $classid"
 done < "$classes"
 
 echo "result dir $resdir - lopputulos kansiossa $resdir" >&2
