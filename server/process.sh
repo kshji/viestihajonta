@@ -105,7 +105,7 @@ do
 done
 cat "$tmpf"
 
-if [ "$pin" = "1" )) ; then
+if [ "$pin" = "1" ] ; then
 	echo "Tiedostot - Files" >> "$tmpf"
 	echo "___________________________________________________________" >> "$tmpf"
 	echo "" >> "$tmpf"
