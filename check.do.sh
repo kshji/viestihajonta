@@ -106,6 +106,7 @@ if [ "$classid" != "" ] ; then # only class, not file
 	echo ""
 	lines=$(cat "$resdir/$classid.check.txt" | wc -l)
 	((lines>1)) && echo " - Variant error class $classid"
+	((lines<2)) && echo " - Variant OK class $classid"
 	exit 0
 fi
 
