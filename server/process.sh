@@ -113,6 +113,14 @@ if [ "$pin" = "1" ] ; then
 	echo "" >> "$tmpf"
 	echo "check.class.csv" >> "$tmpf"
 	cat "$dir/check.class.csv" >> "$tmpf"
+	echo "___________________________________________________________" >> "$tmpf"
+	echo "" >> "$tmpf"
+	echo "check.controls.csv" >> "$tmpf"
+	cat "$dir/check.controls.csv" >> "$tmpf"
+	echo "___________________________________________________________" >> "$tmpf"
+	echo "" >> "$tmpf"
+	echo "check.teams.csv" >> "$tmpf"
+	cat "$dir/check.teams.csv" >> "$tmpf"
 fi
 
 cat "$tmpf"
