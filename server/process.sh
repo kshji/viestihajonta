@@ -90,10 +90,15 @@ echo "$linestr"
 for inf in "$dir"/*.check.txt
 do
 	[ "$inf" = "$dir/*.check.txt" ] && continue
+	
 	onlyfilename="${inf##*/}"
 	classid=${onlyfilename/.check.txt/}
 	#echo "*${classid} ${onlyfilename}*" >> "$tmpf"
 	echo "*${classid}*" >> "$tmpf"
+
+	lines=$(cat "$inf" | wc -l)
+        ((lines>1)) && echo " - Variant error class $classid"
+        ((lines<2)) && echo " - Variant OK class $classid"
 	cat "$inf" >> "$tmpf"
 done
 cat "$tmpf"
