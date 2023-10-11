@@ -28,7 +28,7 @@ done
 (( debug > 8 )) && date
 pin=${pin//[/}
 pin=${pin//]/}
-echo "pin:<$pin>"
+#echo "pin:<$pin>"
 
 
 for inf in $*
