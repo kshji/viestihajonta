@@ -195,6 +195,8 @@ func uploadHandler(w http.ResponseWriter, r *http.Request) {
 	// filenames uploaded
 	var filesstr = ""
 	var diskfilesstr = ""
+	var pinstr = ""
+	var extstr = ""
 
 
 //-----------------------------------------
@@ -203,7 +205,9 @@ func uploadHandler(w http.ResponseWriter, r *http.Request) {
 	//sala := r.MultipartForm.FormName["sala"]
 	//sala := r.PostFormValue("sala") 
 	sala := r.MultipartForm.Value["sala"]
+	ext := r.MultipartForm.Value["extended"]
 	fmt.Printf("Sala : %s\n", sala)
+	fmt.Printf("Ext : %s\n", ext)
 	files := r.MultipartForm.File["file"]
 	filecnt := 0
 	debug := "0"
@@ -292,6 +296,9 @@ func uploadHandler(w http.ResponseWriter, r *http.Request) {
 		diskfilesstr = diskfilesstr + " " + diskfilename
 		//filepath := fmt.Sprintf("./uploads/%d.%s", time.Now().UnixNano(), filename)
 		filepath := fmt.Sprintf("%s/%s", myParam.uploaddir,diskfilename)
+		pinstr = fmt.Sprintf("%s", sala)
+		extstr = fmt.Sprintf("%s", ext)
+		if pinstr  == "" { pinstr="-" }
 		fmt.Printf("Kirj : %s\n", filepath)
 		// filepath.Ext(fileHeader.Filename)
 		f, err := os.Create(filepath)  // filepath.Ext(fileHeader.Filename)))
@@ -325,7 +332,7 @@ func uploadHandler(w http.ResponseWriter, r *http.Request) {
 	//fmt.Fprintf(w, "Files (%d):%s\n",filecnt,filesstr)
 	if debug != "0" { fmt.Fprintf(w, "Files (%d):%s\n",filecnt,diskfilesstr) }
 	//execute("ping -c 2 www.google.com",w)
-	cmdstr := myParam.command + " -d " + debug + " -p " + myParam.uploaddir + " " + diskfilesstr
+	cmdstr := myParam.command + " -d " + debug + " -i " + pinstr + " -e "+ extstr + " -p " + myParam.uploaddir + " " + diskfilesstr
 	execute(cmdstr,w)
 }
 
