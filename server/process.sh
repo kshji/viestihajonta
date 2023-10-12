@@ -109,7 +109,7 @@ do
 	cat "$inf" >> "$tmpf"
 done
 
-echo "ext:$extended" >> "$tmpf"
+#echo "ext:$extended" >> "$tmpf"
 if [ "$extended" != "" ] ; then
 	echo "Tiedostot - Files" >> "$tmpf"
 	echo "___________________________________________________________" >> "$tmpf"
