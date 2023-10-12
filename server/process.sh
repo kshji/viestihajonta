@@ -110,7 +110,7 @@ do
 done
 
 echo "ext:$extended" >> "$tmpf"
-if [ "$extended" = "1" ] ; then
+if [ "$extended" != "" ] ; then
 	echo "Tiedostot - Files" >> "$tmpf"
 	echo "___________________________________________________________" >> "$tmpf"
 	echo "" >> "$tmpf"
