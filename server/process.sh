@@ -8,12 +8,14 @@ method=""
 sourcedir=""
 debug=0
 pin=""
+extended=""
 while [ $# -gt 0 ]
 do
 	arg="$1"
 	case "$arg" in
 		-d) debug="$2" ; shift ;;
 		-i) pin="$2" ; shift ;;
+		-e) extended="$2" ; shift ;;
 		-p) sourcedir="$2" ; shift ;;
 		-c) courcefile="$2" ; shift ;;
 		-t) teamvariantfile="$2" ; shift ;;
@@ -107,7 +109,8 @@ do
 	cat "$inf" >> "$tmpf"
 done
 
-if [ "$pin" = "1" ] ; then
+echo "ext:$extended" >> "$tmpf"
+if [ "$extended" = "1" ] ; then
 	echo "Tiedostot - Files" >> "$tmpf"
 	echo "___________________________________________________________" >> "$tmpf"
 	echo "" >> "$tmpf"
